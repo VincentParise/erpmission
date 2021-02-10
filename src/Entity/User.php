@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -70,6 +72,22 @@ class User implements UserInterface
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeuser;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=specialites::class, inversedBy="users")
+     */
+    private $specialite;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Missions::class, mappedBy="users")
+     */
+    private $missions;
+
+    public function __construct()
+    {
+        $this->specialite = new ArrayCollection();
+        $this->missions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -232,6 +250,57 @@ class User implements UserInterface
     public function setTypeuser(?typesusers $typeuser): self
     {
         $this->typeuser = $typeuser;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|specialites[]
+     */
+    public function getSpecialite(): Collection
+    {
+        return $this->specialite;
+    }
+
+    public function addSpecialite(specialites $specialite): self
+    {
+        if (!$this->specialite->contains($specialite)) {
+            $this->specialite[] = $specialite;
+        }
+
+        return $this;
+    }
+
+    public function removeSpecialite(specialites $specialite): self
+    {
+        $this->specialite->removeElement($specialite);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Missions[]
+     */
+    public function getMissions(): Collection
+    {
+        return $this->missions;
+    }
+
+    public function addMission(Missions $mission): self
+    {
+        if (!$this->missions->contains($mission)) {
+            $this->missions[] = $mission;
+            $mission->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMission(Missions $mission): self
+    {
+        if ($this->missions->removeElement($mission)) {
+            $mission->removeUser($this);
+        }
 
         return $this;
     }

@@ -44,11 +44,17 @@ class Pays
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Missions::class, mappedBy="paysmission")
+     */
+    private $missions;
+
     public function __construct()
     {
         $this->planques = new ArrayCollection();
         $this->cibles = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->missions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,6 +170,36 @@ class Pays
             // set the owning side to null (unless already changed)
             if ($user->getPaysuser() === $this) {
                 $user->setPaysuser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Missions[]
+     */
+    public function getMissions(): Collection
+    {
+        return $this->missions;
+    }
+
+    public function addMission(Missions $mission): self
+    {
+        if (!$this->missions->contains($mission)) {
+            $this->missions[] = $mission;
+            $mission->setPaysmission($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMission(Missions $mission): self
+    {
+        if ($this->missions->removeElement($mission)) {
+            // set the owning side to null (unless already changed)
+            if ($mission->getPaysmission() === $this) {
+                $mission->setPaysmission(null);
             }
         }
 
