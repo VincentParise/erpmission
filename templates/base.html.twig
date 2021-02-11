@@ -1,19 +1,102 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Site de connexion aux missions du KGB">
+    <meta name="author" content="Vincent Parise">
+    <meta name="generator" content="Vincent Parise 0.1">
+    <title>{% block title %}KGB - Site Agents{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('/assets/css/bootstrap.min.css') }}" rel="stylesheet" >
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{{ asset('/assets/img/favicon/favicon.ico') }}">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('/assets/img/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="196x196" href="{{ asset('/assets/img/favicon/favicon-192.png') }}">
+    <link rel="icon" type="image/png" sizes="160x160" href="{{ asset('/assets/img/favicon/favicon-160.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('/assets/img/favicon/favicon-96.png') }}">
+    <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('/assets/img/favicon/favicon-64.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/img/favicon/favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/img/favicon/favicon-16.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('/assets/img/favicon/favicon-57.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/assets/img/favicon/favicon-114.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/assets/img/favicon/favicon-72.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/assets/img/favicon/favicon-144.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('/assets/img/favicon/favicon-60.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('/assets/img/favicon/favicon-120.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/assets/img/favicon/favicon-76.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('/assets/img/favicon/favicon-152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/img/favicon/favicon-180.png') }}">
+    <meta name="msapplication-TileColor" content="#7952b3">
+    <meta name="msapplication-TileImage" content="{{ asset('/assets/img/favicon/favicon-144.png') }}">
+    <meta name="msapplication-config" content="{{ asset('/assets/img/favicon/browserconfig.xml') }}">
+    <meta name="theme-color" content="#7952b3">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="{{ asset('/assets/css/erpmission.css') }}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark erp-family">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('home') }}">
+               <img src="{{ asset('/assets/img/logokgb_headers.png') }}" class="img-fluid" style="height: 75px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'home' %}active{% endif %}" href="{{ path('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'aboutus' %}active{% endif %}" href="{{ path('aboutus') }}">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == '#' %}active{% endif %}" href="#">Connect</a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mt-5 ">
+
+        {% block content %}
+
         {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+</main><!-- /.container -->
+
+<footer class="d-md-flex justify-content-center align-items-center erp-family">
+    <span>@Copyright 2021 - KGB</span>
+</footer>
+
+
+</body>
+{% block javascripts %}
+    <script src="{{ asset('assets/js/erpmission.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+{% endblock %}
 </html>

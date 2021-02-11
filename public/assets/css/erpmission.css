@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+.erp-family {
+    font-family: 'Audiowide', cursive;
+}
+.navbar-item-custom a{
+    color:white;
+    text-decoration: none;
+    margin-right: 25px;
+}
+
+footer {
+    height:75px;
+    width: 100%;
+    background-color: #212529;
+    position:absolute;
+    bottom: 0;
+
+}
+footer span {
+    color : white;
+
+}
