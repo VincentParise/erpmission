@@ -62,19 +62,19 @@ class User implements UserInterface
     private $code;
 
     /**
-     * @ORM\ManyToOne(targetEntity=pays::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Pays::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
     private $paysuser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=typesusers::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Typesusers::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeuser;
 
     /**
-     * @ORM\ManyToMany(targetEntity=specialites::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Specialites::class, inversedBy="users")
      */
     private $specialite;
 

@@ -40,7 +40,7 @@ class Cibles
     private $code;
 
     /**
-     * @ORM\ManyToOne(targetEntity=pays::class, inversedBy="cibles")
+     * @ORM\ManyToOne(targetEntity=Pays::class, inversedBy="cibles")
      * @ORM\JoinColumn(nullable=false)
      */
     private $payscible;

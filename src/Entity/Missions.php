@@ -45,36 +45,36 @@ class Missions
     private $dateend;
 
     /**
-     * @ORM\ManyToOne(targetEntity=typesmissions::class, inversedBy="missions")
+     * @ORM\ManyToOne(targetEntity=Typesmissions::class, inversedBy="missions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $typemission;
 
     /**
-     * @ORM\ManyToOne(targetEntity=statutsmissions::class, inversedBy="missions")
+     * @ORM\ManyToOne(targetEntity=Statutsmissions::class, inversedBy="missions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $statutmission;
 
     /**
-     * @ORM\ManyToOne(targetEntity=pays::class, inversedBy="missions")
+     * @ORM\ManyToOne(targetEntity=Pays::class, inversedBy="missions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $paysmission;
 
     /**
-     * @ORM\ManyToOne(targetEntity=specialites::class, inversedBy="missions")
+     * @ORM\ManyToOne(targetEntity=Specialites::class, inversedBy="missions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $specialitemission;
 
     /**
-     * @ORM\ManyToMany(targetEntity=cibles::class, inversedBy="missions")
+     * @ORM\ManyToMany(targetEntity=Cibles::class, inversedBy="missions")
      */
     private $cibles;
 
     /**
-     * @ORM\ManyToMany(targetEntity=planques::class, inversedBy="missions")
+     * @ORM\ManyToMany(targetEntity=Planques::class, inversedBy="missions")
      */
     private $planques;
 

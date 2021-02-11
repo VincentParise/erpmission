@@ -40,13 +40,13 @@ class Planques
     private $city;
 
     /**
-     * @ORM\ManyToOne(targetEntity=pays::class, inversedBy="planques")
+     * @ORM\ManyToOne(targetEntity=Pays::class, inversedBy="planques")
      * @ORM\JoinColumn(nullable=false)
      */
     private $paysplanque;
 
     /**
-     * @ORM\ManyToOne(targetEntity=typesplanques::class, inversedBy="planques")
+     * @ORM\ManyToOne(targetEntity=Typesplanques::class, inversedBy="planques")
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeplanque;
