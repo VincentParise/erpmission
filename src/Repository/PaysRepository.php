@@ -19,6 +19,23 @@ class PaysRepository extends ServiceEntityRepository
         parent::__construct($registry, Pays::class);
     }
 
+    /**
+     *
+     */
+    public function findIdPaysByIdPlanque($value)
+    {
+        return $this->getEntityManager()->createQuery(
+            'SELECT p FROM App\Entity\Pays p
+                 JOIN p.id i 
+                 WHERE i.pays = :value 
+                 ')
+            ->setParameter('value',$value)
+            ->getResult()
+            ;
+    }
+
+
+
     // /**
     //  * @return Pays[] Returns an array of Pays objects
     //  */

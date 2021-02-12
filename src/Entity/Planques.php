@@ -61,6 +61,12 @@ class Planques
         $this->missions = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getCode().' '.$this->getPaysPlanque();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

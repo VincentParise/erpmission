@@ -83,10 +83,20 @@ class User implements UserInterface
      */
     private $missions;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $namecode;
+
     public function __construct()
     {
         $this->specialite = new ArrayCollection();
         $this->missions = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+       return $this->getUsername();
     }
 
     public function getId(): ?int
@@ -113,7 +123,8 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        //return (string) $this->email;
+        return $this->getFirstname().' '.$this->getLastname();
     }
 
     /**
@@ -301,6 +312,18 @@ class User implements UserInterface
         if ($this->missions->removeElement($mission)) {
             $mission->removeUser($this);
         }
+
+        return $this;
+    }
+
+    public function getNamecode(): ?string
+    {
+        return $this->namecode;
+    }
+
+    public function setNamecode(string $namecode): self
+    {
+        $this->namecode = $namecode;
 
         return $this;
     }

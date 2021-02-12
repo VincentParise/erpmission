@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Missions{% endblock %}
+
+{% block content %}
+    <h1>Missions index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Nom de Code</th>
+                <th>Date Début</th>
+                <th>Date Fin</th>
+                <th>Pays</th>
+                <th>Spécialité</th>
+                <th>Cibles</th>
+                <th>Planques</th>
+                <th>Agents</th>
+                <th>Statut</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for mission in missions %}
+            <tr>
+                <td>{{ mission.id }}</td>
+                <td>{{ mission.title }}</td>
+                <td>{{ mission.description }}</td>
+                <td>{{ mission.codename }}</td>
+                <td>{{ mission.datestart ? mission.datestart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mission.dateend ? mission.dateend|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mission.paysmission }}</td>
+                <td>{{ mission.specialitemission }}</td>
+                <td>
+                    {% for cible in mission.cibles %}
+                        {{ cible }} <br/>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for planque in mission.planques %}
+                        {{ planque }} <br/>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for agent in mission.users %}
+                       {{ agent }}
+                    {% endfor %}
+                </td>
+                <td>{{ mission.statutmission }}</td>
+                <td>
+                    <a href="{{ path('missions_show', {'id': mission.id}) }}">show</a><br/>
+                    <a href="{{ path('missions_edit', {'id': mission.id}) }}">edit</a><br/>
+                    <a href="{{ path('missions_planques', {'id': mission.id}) }}">Planques</a><br/>
+                    <a href="#">Cibles</a><br/>
+                    <a href="#">Agents</a><br/>
+                    <a href="#">Contacts</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('missions_new') }}">Create new</a>
+{% endblock %}

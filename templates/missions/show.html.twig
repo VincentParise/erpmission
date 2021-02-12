@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Missions{% endblock %}
+
+{% block content %}
+    <h1>Missions</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mission.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ mission.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ mission.description }}</td>
+            </tr>
+            <tr>
+                <th>Nom de Code</th>
+                <td>{{ mission.codename }}</td>
+            </tr>
+            <tr>
+                <th>Date Début</th>
+                <td>{{ mission.datestart ? mission.datestart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de Fin</th>
+                <td>{{ mission.dateend ? mission.dateend|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ mission.paysmission }}</td>
+            </tr>
+            <tr>
+                <th>Spécialité</th>
+                <td>{{ mission.specialitemission }}</td>
+            </tr>
+            <tr>
+                <th>Cibles : Nom de Code</th>
+                <td>
+                {% for cible in mission.cibles %}
+                    {{ cible.getNamecode }} <br/>
+                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Planques</th>
+                <td>
+                    {% for planque in mission.planques %}
+                        {{ planque }} <br/>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ mission.statutmission }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('missions_index') }}">back to list</a>
+
+    <a href="{{ path('missions_edit', {'id': mission.id}) }}">edit</a>
+
+    {{ include('missions/_delete_form.html.twig') }}
+{% endblock %}

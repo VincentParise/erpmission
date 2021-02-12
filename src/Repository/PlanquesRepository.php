@@ -19,22 +19,47 @@ class PlanquesRepository extends ServiceEntityRepository
         parent::__construct($registry, Planques::class);
     }
 
-    // /**
-    //  * @return Planques[] Returns an array of Planques objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     *Trouve la liste des planques dont le nom du pays correspond au libelle jointure pays
+     */
+    public function findAllPaysByIdPlanque($value)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->getEntityManager()->createQuery(
+                'SELECT p FROM App\Entity\Planques p
+                 JOIN p.paysplanque i 
+                 WHERE i.libelle = :value 
+                 ')
+                ->setParameter('value',$value)
+                ->getResult()
+                ;
     }
-    */
+
+    /**
+     * Trouve l'id du pays planque par rapport à l'id de la planque
+     */
+    public function findIdPaysplanqueByIdplanque(int $value)
+    {
+        return $this->getEntityManager()->createQuery(
+            'SELECT typeplanque_id FROM App\Entity\Planques p
+                  WHERE p.id = :value 
+                 ')
+            ->setParameter('value',$value)
+            ->getResult()
+            ;
+    }
+
+    /*public function findIdPaysPlanqueByIdPlanque(int $value)
+    {
+        return $this->getEntityManager()->createQuery(
+            'SELECT p FROM App\Entity\Planques p
+                 JOIN p.paysplanque i
+                 WHERE i.libelle = :value
+                 ')
+            ->setParameter('value',$value)
+            ->getResult()
+            ;
+    }*/
+
 
     /*
     public function findOneBySomeField($value): ?Planques

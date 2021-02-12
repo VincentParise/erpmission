@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Planques des Missions{% endblock %}
+
+{% block content %}
+    <h1>Planque pour la mission {{ mission.title }}</h1>
+
+    {% for message in app.flashes('alert') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+    {{ include('missions/form.html.twig', {'button_label': 'Update'}) }}
+    <a href="{{ path('missions_index') }}">Retour List</a>
+
+{% endblock %}

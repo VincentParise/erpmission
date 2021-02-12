@@ -50,9 +50,19 @@ class Cibles
      */
     private $missions;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $namecode;
+
     public function __construct()
     {
         $this->missions = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getFirstname().' '.$this->getLastname();
     }
 
     public function getId(): ?int
@@ -143,6 +153,18 @@ class Cibles
         if ($this->missions->removeElement($mission)) {
             $mission->removeCible($this);
         }
+
+        return $this;
+    }
+
+    public function getNamecode(): ?string
+    {
+        return $this->namecode;
+    }
+
+    public function setNamecode(string $namecode): self
+    {
+        $this->namecode = $namecode;
 
         return $this;
     }
