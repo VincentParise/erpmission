@@ -197,7 +197,15 @@ class MissionsController extends AbstractController
         $form = $this->createForm(MissionsAgentsType::class, $mission);
         $form->handleRequest($request);
 
+        //On récupère la spécialité de la mission :
+        $specialite=$mission->getSpecialitemission()->getLibelle();
+
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+
+
 
             $this->entityManager->flush();
 
@@ -221,8 +229,24 @@ class MissionsController extends AbstractController
         $form = $this->createForm(MissionsContactsType::class, $mission);
         $form->handleRequest($request);
 
+        // On récupère le pays de la mission :
+        $countryMission=$mission->getPaysmission()->getLibelle();
+
+
         if ($form->isSubmitted() && $form->isValid()) {
 
+            // On teste si le pays du contact est le même que la mission
+            $contacts=$form->get('contacts')->getData();
+            //On test si l'ensemble des contacts est du même pays que la mission
+
+            if (!empty($contacts)){
+                foreach($contacts as $key=>$element){
+                    if($countryMission !== $contacts[$key]->getPays()->getLibelle()){
+                        $this->addFlash('alert','Les contacts doivent être de la même nationalité que la mission');
+                        return $this->redirectToRoute('missions_contacts',['id'=>$mission->getId()]);
+                    }
+                }
+            }
 
             $this->entityManager->flush();
 
@@ -237,7 +261,7 @@ class MissionsController extends AbstractController
 
 
     /**
-     * @Route("/{id}", name="missions_delete", methods={"DELETE"})
+     * @Route("/{id}/missions_delete", name="missions_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Missions $mission): Response
     {
@@ -249,4 +273,21 @@ class MissionsController extends AbstractController
 
         return $this->redirectToRoute('missions_index');
     }
+
+    ///*
+    ///**
+    // * @Route("/{id}/planques/delete", name="planques_delete", methods={"DELETE"})
+    // */
+    //public function deletePlanques(Request $request, Missions $mission,Planques $planques): Response
+    //{
+    //    if ($this->isCsrfTokenValid('delete'.$mission->getId(), $request->request->get('_token'))) {
+//
+    //        dd($request->request->get('_planques'));
+    //        $mission->removePlanque();
+//
+    //    }
+//
+    //    return $this->redirectToRoute('missions_index');
+    //}
+    //*/
 }

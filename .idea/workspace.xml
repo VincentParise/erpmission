@@ -11,26 +11,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/missions/edit_missions_agents.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/missions/edit_missions_cibles.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/missions/edit_missions_contacts.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b90ec95-135e-4690-83c5-a6eb26e7665c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4b90ec95-135e-4690-83c5-a6eb26e7665c.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/missions/delete_planques_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ANALYSE/MCD-MLD Version finale.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/TypesusersCrudController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/UserCrudController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MissionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Agents.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Agents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Contacts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Missions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Missions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Pays.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Pays.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Specialites.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Specialites.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Typesusers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MissionsAgentsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MissionsAgentsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MissionsContactsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MissionsContactsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MissionsPlanquesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MissionsPlanquesType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/_delete_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/missions/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_agents.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_agents.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_cibles.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_cibles.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_contacts.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_contacts.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_planques.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_planques.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/missions/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,13 +174,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\missions" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\src\Controller" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\src\Controller\Admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -195,7 +194,8 @@
       <workItem from="1612966775807" duration="11885000" />
       <workItem from="1613027124066" duration="439000" />
       <workItem from="1613027567764" duration="51124000" />
-      <workItem from="1613114096293" duration="16316000" />
+      <workItem from="1613114096293" duration="17640000" />
+      <workItem from="1613136646923" duration="9077000" />
     </task>
     <servers />
   </component>
@@ -219,14 +219,14 @@
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4392" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1612967998424" />
-    <state x="4605" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1613077154696">
+    <state x="4605" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1613135594909">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="4605" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613077154696" />
-    <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1613124792237">
+    <state x="4605" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613135594909" />
+    <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1613136518835">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613124792237" />
+    <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613136518835" />
     <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1613033593865">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
@@ -235,10 +235,10 @@
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4543" y="243" key="NewPhpClassDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613052267792" />
-    <state x="4301" y="165" key="SettingsEditor" timestamp="1613030548934">
+    <state x="4301" y="165" key="SettingsEditor" timestamp="1613138105156">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="4301" y="165" key="SettingsEditor/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613030548934" />
+    <state x="4301" y="165" key="SettingsEditor/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613138105156" />
     <state x="4530" y="325" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1613125511190">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>

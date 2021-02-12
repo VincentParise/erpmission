@@ -2,7 +2,9 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Agents;
 use App\Entity\Cibles;
+use App\Entity\Contacts;
 use App\Entity\Missions;
 use App\Entity\Pays;
 use App\Entity\Planques;
@@ -42,6 +44,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Utilisateurs Connect');
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
 
+        yield MenuItem::section('Agents');
+        yield MenuItem::linkToCrud('Agents', 'fas fa-users', Agents::class);
+
+        yield MenuItem::section('Contacts');
+        yield MenuItem::linkToCrud('Contacts', 'fas fa-users', Contacts::class);
+
         yield MenuItem::section('Paramétrages Divers');
         yield MenuItem::linkToCrud('Pays', 'fas fa-globe', Pays::class);
         yield MenuItem::linkToCrud('Statut Missions', 'fas fa-thermometer-quarter', Statutsmissions::class);
@@ -55,8 +63,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Les Cibles');
         yield MenuItem::linkToCrud('Cibles', 'fas fa-bullseye', Cibles::class);
 
-        yield MenuItem::section('Les Missions');
-        yield MenuItem::linkToCrud('Missions', 'fas fa-briefcase', Missions::class);
+        yield MenuItem::section('Gestion Des Missions');
+        yield MenuItem::linktoRoute('Gestion Missions', 'fas fa-briefcase', 'missions_index');
 
     }
 }

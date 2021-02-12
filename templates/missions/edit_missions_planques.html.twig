@@ -3,7 +3,7 @@
 {% block title %}Edit Planques des Missions{% endblock %}
 
 {% block content %}
-    <h1>Planque pour la mission {{ mission.title }}</h1>
+    <h1>Planque mission : {{ mission.codename }}</h1>
 
     {% for message in app.flashes('alert') %}
         <div class="alert alert-info">
@@ -11,8 +11,10 @@
         </div>
     {% endfor %}
 
+    {{ include('missions/form.html.twig', {'button_label': 'Sauvegarde'}) }}
 
-    {{ include('missions/form.html.twig', {'button_label': 'Update'}) }}
-    <a href="{{ path('missions_index') }}">Retour List</a>
+        {# {{ include('missions/delete_planques_form.html.twig') }} #}
+
+    <a href="{{ path('missions_index') }}" class="btn btn-primary btn-sm">Retour Liste</a>
 
 {% endblock %}

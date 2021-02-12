@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Contacts;
 use App\Entity\Missions;
 use App\Entity\User;
 use Doctrine\ORM\EntityRepository;
@@ -15,18 +16,19 @@ class MissionsContactsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            /*
-            ->add('users',EntityType::class,[
-                'label'=>'Agent(s)',
-                'required'=>true,
+
+            ->add('contacts',EntityType::class,[
+                'label'=>'Contact(s)',
                 'multiple'=>true,
-                'class'=>User::class,
+                'class'=>Contacts::class,
                 'mapped'=>true,
+                'required'=>true
+                /*
                 'query_builder'=> function(EntityRepository $entityRepository){
                     return $entityRepository->createQueryBuilder('u')
                         ->where('u.typeuser = 3'); //Type = 3 = Contact
-                }
-            ])*/
+                }*/
+            ])
         ;
     }
 

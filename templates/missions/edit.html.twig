@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Missions{% endblock %}
+{% block title %}Création Missions{% endblock %}
 
 {% block content %}
-    <h1>Edit Missions</h1>
+    <h1>Création nouvelle Mission</h1>
 
     {% for message in app.flashes('alert') %}
         <div class="alert alert-info">
@@ -11,11 +11,15 @@
         </div>
     {% endfor %}
 
-    {{ include('missions/form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('missions/form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('missions_index') }}">back to list</a>
 
-    {{ include('missions/_delete_form.html.twig') }}
+        {{ include('missions/_delete_form.html.twig') }}
+
+
+    <a href="{{ path('missions_index') }}" class="btn btn-primary btn-sm mt-1">Retour liste</a>
+
+
 
 
 

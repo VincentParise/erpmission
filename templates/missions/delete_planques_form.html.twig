@@ -1,0 +1,10 @@
+<form method="post" action="{{ path('planques_delete', {'id': mission.id}) }}" onsubmit="return confirm('Etes vous sûr de vouloir supprimer les planques de la mission ?');">
+    <input type="hidden" name="_method" value="DELETE">
+
+    {% for planque in mission.planques %}
+
+         <input type="hidden" name="_planques" value="{{ planque.code }}">
+    {% endfor %}
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ mission.id) }}">
+    <button class="btn btn-danger btn-sm">Delete</button>
+</form>

@@ -16,7 +16,9 @@ class MissionsPlanquesType extends AbstractType
         $builder
             ->add('planques',EntityType::class,[
                 'class'=>Planques::class,
-                'multiple'=>true
+                'multiple'=>true,
+                'required'=>false,
+
 
             ])
 
