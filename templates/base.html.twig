@@ -71,7 +71,7 @@
                         <a class="nav-link {% if app.request.get('_route') == 'aboutus' %}active{% endif %}" href="{{ path('aboutus') }}">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if app.request.get('_route') == '#' %}active{% endif %}" href="#">Connect</a>
+                        <a class="nav-link {% if app.request.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">Connect</a>
                     </li>
                 </ul>
 

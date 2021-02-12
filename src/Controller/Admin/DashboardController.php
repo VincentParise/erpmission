@@ -39,16 +39,15 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
 
+        yield MenuItem::section('Utilisateurs Connect');
+        yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
+
         yield MenuItem::section('Paramétrages Divers');
         yield MenuItem::linkToCrud('Pays', 'fas fa-globe', Pays::class);
         yield MenuItem::linkToCrud('Statut Missions', 'fas fa-thermometer-quarter', Statutsmissions::class);
         yield MenuItem::linkToCrud('Type Missions', 'fas fa-font', Typesmissions::class);
-        yield MenuItem::linkToCrud('Type User', 'fas fa-font', Typesusers::class);
         yield MenuItem::linkToCrud('Type Planque', 'fas fa-font', Typesplanques::class);
         yield MenuItem::linkToCrud('Spécialité', 'fas fa-font', Specialites::class);
-
-        yield MenuItem::section('Les Utilisateurs');
-        yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
 
         yield MenuItem::section('Les planques');
         yield MenuItem::linkToCrud('Planques', 'fas fa-eye-slash', Planques::class);

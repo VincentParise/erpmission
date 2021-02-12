@@ -3,7 +3,7 @@
 {% block title %}Liste des Missions{% endblock %}
 
 {% block content %}
-    <h1>Missions index</h1>
+    <h1>Liste des Missions</h1>
 
     <table class="table">
         <thead>
@@ -19,6 +19,7 @@
                 <th>Cibles</th>
                 <th>Planques</th>
                 <th>Agents</th>
+                <th>Contacts</th>
                 <th>Statut</th>
                 <th>Actions</th>
 
@@ -45,19 +46,15 @@
                         {{ planque }} <br/>
                     {% endfor %}
                 </td>
-                <td>
-                    {% for agent in mission.users %}
-                       {{ agent }}
-                    {% endfor %}
-                </td>
+
                 <td>{{ mission.statutmission }}</td>
                 <td>
                     <a href="{{ path('missions_show', {'id': mission.id}) }}">show</a><br/>
                     <a href="{{ path('missions_edit', {'id': mission.id}) }}">edit</a><br/>
                     <a href="{{ path('missions_planques', {'id': mission.id}) }}">Planques</a><br/>
-                    <a href="#">Cibles</a><br/>
-                    <a href="#">Agents</a><br/>
-                    <a href="#">Contacts</a>
+                    <a href="{{ path('missions_cibles', {'id': mission.id}) }}">Cibles</a><br/>
+                    <a href="{{ path('missions_agents', {'id': mission.id}) }}">Agents</a><br/>
+                    <a href="{{ path('missions_contacts', {'id': mission.id}) }}">Contacts</a><br/>
                 </td>
             </tr>
         {% else %}

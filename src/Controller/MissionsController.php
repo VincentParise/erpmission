@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Entity\Cibles;
 use App\Entity\Missions;
 use App\Entity\Planques;
+use App\Form\MissionsAgentsType;
+use App\Form\MissionsCiblesType;
+use App\Form\MissionsContactsType;
 use App\Form\MissionsPlanquesType;
 use App\Form\MissionsType;
 use App\Repository\MissionsRepository;
@@ -88,17 +91,26 @@ class MissionsController extends AbstractController
 
         //Recupération des libelle pays des planques de la mission.
         $paysplanques=$mission->getPlanques();
-        $tab=[];
+        $tabLibellePlanques=[];
         foreach($paysplanques as $key=>$element){
-            $tab[]=$element->getPaysPlanque()->getLibelle();
+            $tabLibellePlanques[]=$element->getPaysPlanque()->getLibelle();
         }
-        dd($tab);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            // On récupère le champ pays de la mission
+            $paysMission=$form->get('paysmission')->getData()->getLibelle();
+            // On test si le pays de la mission fait bien parti des pays de la planque
+            if (!empty($tabLibellePlanques)){
+                foreach($tabLibellePlanques as $element){
+                    if ($element !== $paysMission) {
+                        // Message Flash
+                        $this->addFlash('alert','Le pays de mission doit être le même que celui du pays de ou des planques en '.$element);
+                        return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+                    }
+                }
+            }
 
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('missions_index');
         }
 
@@ -145,6 +157,79 @@ class MissionsController extends AbstractController
         }
 
         return $this->render('missions/edit_missions_planques.html.twig', [
+            'mission' => $mission,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/cibles", name="missions_cibles", methods={"GET","POST"})
+     * @param Request $request
+     * @param Missions $mission
+     * @return Response
+     */
+    public function editCibles(Request $request, Missions $mission): Response
+    {
+        $form = $this->createForm(MissionsCiblesType::class, $mission);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('missions_index');
+        }
+
+        return $this->render('missions/edit_missions_cibles.html.twig', [
+            'mission' => $mission,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/agents", name="missions_agents", methods={"GET","POST"})
+     * @param Request $request
+     * @param Missions $mission
+     * @return Response
+     */
+    public function editAgents(Request $request, Missions $mission): Response
+    {
+        $form = $this->createForm(MissionsAgentsType::class, $mission);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('missions_index');
+        }
+
+        return $this->render('missions/edit_missions_agents.html.twig', [
+            'mission' => $mission,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/contacts", name="missions_contacts", methods={"GET","POST"})
+     * @param Request $request
+     * @param Missions $mission
+     * @return Response
+     */
+    public function editContacts(Request $request, Missions $mission): Response
+    {
+        $form = $this->createForm(MissionsContactsType::class, $mission);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('missions_index');
+        }
+
+        return $this->render('missions/edit_missions_contacts.html.twig', [
             'mission' => $mission,
             'form' => $form->createView(),
         ]);

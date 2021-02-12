@@ -25,19 +25,19 @@ class Specialites
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="specialite")
-     */
-    private $users;
-
-    /**
      * @ORM\OneToMany(targetEntity=Missions::class, mappedBy="specialitemission")
      */
     private $missions;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Agents::class, mappedBy="specialites")
+     */
+    private $agents;
+
     public function __construct()
     {
-        $this->users = new ArrayCollection();
         $this->missions = new ArrayCollection();
+        $this->agents = new ArrayCollection();
     }
 
     public function __toString()
@@ -59,33 +59,6 @@ class Specialites
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addSpecialite($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeSpecialite($this);
-        }
 
         return $this;
     }
@@ -115,6 +88,33 @@ class Specialites
             if ($mission->getSpecialitemission() === $this) {
                 $mission->setSpecialitemission(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Agents[]
+     */
+    public function getAgents(): Collection
+    {
+        return $this->agents;
+    }
+
+    public function addAgent(Agents $agent): self
+    {
+        if (!$this->agents->contains($agent)) {
+            $this->agents[] = $agent;
+            $agent->addSpecialite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAgent(Agents $agent): self
+    {
+        if ($this->agents->removeElement($agent)) {
+            $agent->removeSpecialite($this);
         }
 
         return $this;

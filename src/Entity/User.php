@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -36,69 +34,6 @@ class User implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $firstname;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $lastname;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $birthday;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $code;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Pays::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $paysuser;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Typesusers::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $typeuser;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Specialites::class, inversedBy="users")
-     */
-    private $specialite;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Missions::class, mappedBy="users")
-     */
-    private $missions;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $namecode;
-
-    public function __construct()
-    {
-        $this->specialite = new ArrayCollection();
-        $this->missions = new ArrayCollection();
-    }
-
-    public function __toString()
-    {
-       return $this->getUsername();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -123,8 +58,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        //return (string) $this->email;
-        return $this->getFirstname().' '.$this->getLastname();
+        return (string) $this->email;
     }
 
     /**
@@ -179,152 +113,5 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    public function getLastname(): ?string
-    {
-        return $this->lastname;
-    }
-
-    public function setLastname(string $lastname): self
-    {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getBirthday(): ?\DateTimeInterface
-    {
-        return $this->birthday;
-    }
-
-    public function setBirthday(\DateTimeInterface $birthday): self
-    {
-        $this->birthday = $birthday;
-
-        return $this;
-    }
-
-    public function getCode(): ?int
-    {
-        return $this->code;
-    }
-
-    public function setCode(int $code): self
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    public function getPaysuser(): ?pays
-    {
-        return $this->paysuser;
-    }
-
-    public function setPaysuser(?pays $paysuser): self
-    {
-        $this->paysuser = $paysuser;
-
-        return $this;
-    }
-
-    public function getTypeuser(): ?typesusers
-    {
-        return $this->typeuser;
-    }
-
-    public function setTypeuser(?typesusers $typeuser): self
-    {
-        $this->typeuser = $typeuser;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|specialites[]
-     */
-    public function getSpecialite(): Collection
-    {
-        return $this->specialite;
-    }
-
-    public function addSpecialite(specialites $specialite): self
-    {
-        if (!$this->specialite->contains($specialite)) {
-            $this->specialite[] = $specialite;
-        }
-
-        return $this;
-    }
-
-    public function removeSpecialite(specialites $specialite): self
-    {
-        $this->specialite->removeElement($specialite);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Missions[]
-     */
-    public function getMissions(): Collection
-    {
-        return $this->missions;
-    }
-
-    public function addMission(Missions $mission): self
-    {
-        if (!$this->missions->contains($mission)) {
-            $this->missions[] = $mission;
-            $mission->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMission(Missions $mission): self
-    {
-        if ($this->missions->removeElement($mission)) {
-            $mission->removeUser($this);
-        }
-
-        return $this;
-    }
-
-    public function getNamecode(): ?string
-    {
-        return $this->namecode;
-    }
-
-    public function setNamecode(string $namecode): self
-    {
-        $this->namecode = $namecode;
-
-        return $this;
     }
 }

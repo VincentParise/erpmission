@@ -5,6 +5,12 @@
 {% block content %}
     <h1>Edit Missions</h1>
 
+    {% for message in app.flashes('alert') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     {{ include('missions/form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('missions_index') }}">back to list</a>

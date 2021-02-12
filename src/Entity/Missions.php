@@ -79,15 +79,23 @@ class Missions
     private $planques;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="missions")
+     * @ORM\ManyToMany(targetEntity=Agents::class, inversedBy="missions")
      */
-    private $users;
+    private $agents;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Contacts::class, inversedBy="missions")
+     */
+    private $contacts;
+
 
     public function __construct()
     {
         $this->cibles = new ArrayCollection();
         $this->planques = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->agents = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -252,26 +260,51 @@ class Missions
     }
 
     /**
-     * @return Collection|User[]
+     * @return Collection|Agents[]
      */
-    public function getUsers(): Collection
+    public function getAgents(): Collection
     {
-        return $this->users;
+        return $this->agents;
     }
 
-    public function addUser(User $user): self
+    public function addAgent(Agents $agent): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
+        if (!$this->agents->contains($agent)) {
+            $this->agents[] = $agent;
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeAgent(Agents $agent): self
     {
-        $this->users->removeElement($user);
+        $this->agents->removeElement($agent);
 
         return $this;
     }
+
+    /**
+     * @return Collection|Contacts[]
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contacts $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts[] = $contact;
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contacts $contact): self
+    {
+        $this->contacts->removeElement($contact);
+
+        return $this;
+    }
+
 }

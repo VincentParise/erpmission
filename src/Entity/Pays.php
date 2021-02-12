@@ -39,22 +39,29 @@ class Pays
      */
     private $cibles;
 
-    /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="paysuser")
-     */
-    private $users;
 
     /**
      * @ORM\OneToMany(targetEntity=Missions::class, mappedBy="paysmission")
      */
     private $missions;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Contacts::class, mappedBy="pays")
+     */
+    private $contacts;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Agents::class, mappedBy="pays")
+     */
+    private $agents;
+
     public function __construct()
     {
         $this->planques = new ArrayCollection();
         $this->cibles = new ArrayCollection();
-        $this->users = new ArrayCollection();
         $this->missions = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
+        $this->agents = new ArrayCollection();
     }
 
     public function __toString() {
@@ -151,36 +158,6 @@ class Pays
     }
 
     /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setPaysuser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getPaysuser() === $this) {
-                $user->setPaysuser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Missions[]
      */
     public function getMissions(): Collection
@@ -204,6 +181,66 @@ class Pays
             // set the owning side to null (unless already changed)
             if ($mission->getPaysmission() === $this) {
                 $mission->setPaysmission(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contacts[]
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contacts $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts[] = $contact;
+            $contact->setPays($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contacts $contact): self
+    {
+        if ($this->contacts->removeElement($contact)) {
+            // set the owning side to null (unless already changed)
+            if ($contact->getPays() === $this) {
+                $contact->setPays(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Agents[]
+     */
+    public function getAgents(): Collection
+    {
+        return $this->agents;
+    }
+
+    public function addAgent(Agents $agent): self
+    {
+        if (!$this->agents->contains($agent)) {
+            $this->agents[] = $agent;
+            $agent->setPays($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAgent(Agents $agent): self
+    {
+        if ($this->agents->removeElement($agent)) {
+            // set the owning side to null (unless already changed)
+            if ($agent->getPays() === $this) {
+                $agent->setPays(null);
             }
         }
 
