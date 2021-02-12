@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Agents;
 use App\Entity\Cibles;
 use App\Entity\Contacts;
-use App\Entity\Missions;
 use App\Entity\Pays;
 use App\Entity\Planques;
 use App\Entity\Specialites;
@@ -17,6 +16,7 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -28,18 +28,27 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+
+        //return parent::index();
+        // redirect to some CRUD controller
+        $routeBuilder = $this->get(AdminUrlGenerator::class);
+
+        return $this->redirect($routeBuilder->setController(AgentsCrudController::class)->generateUrl());
+
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('ERPMISSION');
+            ->setTitle('DASHBOARD ERP-MISSION')
+
+            ;
+
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+        //yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
 
         yield MenuItem::section('Utilisateurs Connect');
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
@@ -65,6 +74,10 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Gestion Des Missions');
         yield MenuItem::linktoRoute('Gestion Missions', 'fas fa-briefcase', 'missions_index');
+
+        yield MenuItem::section('Retour');
+        yield MenuItem::linktoRoute('Retour', 'fas fa-home', 'missions_index');
+
 
     }
 }

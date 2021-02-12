@@ -11,25 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/missions/delete_planques_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Classe/Rules.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MissionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Agents.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Agents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Contacts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Missions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Missions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MissionsAgentsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MissionsAgentsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MissionsContactsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MissionsContactsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MissionsPlanquesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MissionsPlanquesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_agents.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_agents.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_cibles.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_cibles.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_contacts.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_contacts.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_planques.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_planques.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +152,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/missions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SYMFONY/laboutiquefrancaise" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
@@ -195,7 +180,7 @@
       <workItem from="1613027124066" duration="439000" />
       <workItem from="1613027567764" duration="51124000" />
       <workItem from="1613114096293" duration="17640000" />
-      <workItem from="1613136646923" duration="9077000" />
+      <workItem from="1613136646923" duration="14906000" />
     </task>
     <servers />
   </component>
@@ -227,14 +212,14 @@
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613136518835" />
-    <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1613033593865">
+    <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1613147742188">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="4468" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613033593865" />
-    <state x="4543" y="243" key="NewPhpClassDialog" timestamp="1613052267792">
+    <state x="4468" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613147742188" />
+    <state x="4543" y="243" key="NewPhpClassDialog" timestamp="1613150040510">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="4543" y="243" key="NewPhpClassDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613052267792" />
+    <state x="4543" y="243" key="NewPhpClassDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613150040510" />
     <state x="4301" y="165" key="SettingsEditor" timestamp="1613138105156">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>

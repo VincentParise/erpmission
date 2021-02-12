@@ -2,17 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Cibles;
+use App\Classe\Rules;
 use App\Entity\Missions;
-use App\Entity\Planques;
 use App\Form\MissionsAgentsType;
 use App\Form\MissionsCiblesType;
 use App\Form\MissionsContactsType;
 use App\Form\MissionsPlanquesType;
 use App\Form\MissionsType;
 use App\Repository\MissionsRepository;
-use App\Repository\PaysRepository;
-use App\Repository\PlanquesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -166,18 +163,31 @@ class MissionsController extends AbstractController
      * @Route("/{id}/cibles", name="missions_cibles", methods={"GET","POST"})
      * @param Request $request
      * @param Missions $mission
+     * @param Rules $rules
      * @return Response
      */
-    public function editCibles(Request $request, Missions $mission): Response
+    public function editCibles(Request $request, Missions $mission,Rules $rules): Response
     {
         $form = $this->createForm(MissionsCiblesType::class, $mission);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+         if ($form->isSubmitted() && $form->isValid()) {
+             //On récupère les agents de la mission en cours : objet
+             $agents=$mission->getAgents();
+
+             //On récupère la nationalité des cibles saisie dans le formulaire
+             $cibles=$form->get('cibles')->getData();
+
+            // On vérifie la règle des nationalités.
+            if (!$rules->ruleCiblesAgentsNat($cibles,$agents)) {
+                $this->addFlash('alert','Le(s) cible(s) ne peuvent pas avoir la même nationalité que le(s) agent(s).');
+                return $this->redirectToRoute('missions_cibles',['id'=>$mission->getId()]);
+            }
 
             $this->entityManager->flush();
 
             return $this->redirectToRoute('missions_index');
+
         }
 
         return $this->render('missions/edit_missions_cibles.html.twig', [
@@ -190,22 +200,33 @@ class MissionsController extends AbstractController
      * @Route("/{id}/agents", name="missions_agents", methods={"GET","POST"})
      * @param Request $request
      * @param Missions $mission
+     * @param Rules $rules
      * @return Response
      */
-    public function editAgents(Request $request, Missions $mission): Response
+    public function editAgents(Request $request, Missions $mission,Rules $rules): Response
     {
         $form = $this->createForm(MissionsAgentsType::class, $mission);
         $form->handleRequest($request);
 
-        //On récupère la spécialité de la mission :
-        $specialite=$mission->getSpecialitemission()->getLibelle();
-
-
         if ($form->isSubmitted() && $form->isValid()) {
+            //Récupération collection Agents
+            $agents=$form->get('agents')->getData();
+            //On récupère la spécialité de la mission :
+            $specialite=$mission->getSpecialitemission()->getLibelle();
+            //On récupère les cibles des missions :
+            $cibles=$mission->getCibles();
 
+           // On vérifie la règle des agents et leur spécialité
+            if (!$rules->ruleAgentsSpecialites($specialite,$agents)) {
+                $this->addFlash('alert','Au moins 1 agent doit avoir la spécialité de la mission.');
+                return $this->redirectToRoute('missions_agents',['id'=>$mission->getId()]);
+            }
 
-
-
+            // On vérifie la règle des nationalités.
+            if (!$rules->ruleCiblesAgentsNat($cibles,$agents)) {
+                $this->addFlash('alert','Le(s) agent(s) ne peuvent pas avoir la même nationalité que le(s) cible(s).');
+                return $this->redirectToRoute('missions_cibles',['id'=>$mission->getId()]);
+            }
 
             $this->entityManager->flush();
 
@@ -237,8 +258,8 @@ class MissionsController extends AbstractController
 
             // On teste si le pays du contact est le même que la mission
             $contacts=$form->get('contacts')->getData();
-            //On test si l'ensemble des contacts est du même pays que la mission
 
+            //On test si l'ensemble des contacts est du même pays que la mission
             if (!empty($contacts)){
                 foreach($contacts as $key=>$element){
                     if($countryMission !== $contacts[$key]->getPays()->getLibelle()){
