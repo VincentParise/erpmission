@@ -37,18 +37,34 @@
                 <td>{{ mission.specialitemission }}</td>
             </tr>
             <tr>
-                <th>Cibles : Nom de Code</th>
+                <th>Cible(s)</th>
                 <td>
                 {% for cible in mission.cibles %}
-                    {{ cible.getNamecode }} <br/>
+                    <strong>Nom de code : </strong>{{ cible.getNamecode }} <strong>Nom : </strong>{{ cible.lastname }}<br/>
                 {% endfor %}
                 </td>
             </tr>
             <tr>
-                <th>Planques</th>
+                <th>Planque(s)</th>
                 <td>
                     {% for planque in mission.planques %}
-                        {{ planque }} <br/>
+                        <strong>Code : </strong>{{ planque.code }} <strong>Type : </strong>{{ planque.typeplanque }} <strong>Pays : </strong>{{ planque.paysPlanque }}<br/>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Contact(s)</th>
+                <td>
+                    {% for contact in mission.contacts %}
+                        <strong>Code : </strong>{{ contact.codename }} <strong>Nom : </strong>{{ contact.lastname }} <br/>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Agent(s)</th>
+                <td>
+                    {% for agent in mission.agents %}
+                        <strong>Code : </strong>{{ agent.code }} <strong>Nom : </strong>{{ agent.lastname }} <br/>
                     {% endfor %}
                 </td>
             </tr>

@@ -79,15 +79,17 @@ class Missions
      */
     private $planques;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Agents::class, inversedBy="missions")
-     */
-    private $agents;
+
 
     /**
      * @ORM\ManyToMany(targetEntity=Contacts::class, inversedBy="missions")
      */
     private $contacts;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Agents::class, mappedBy="missions")
+     */
+    private $agents;
 
 
     public function __construct()
@@ -260,29 +262,6 @@ class Missions
         return $this;
     }
 
-    /**
-     * @return Collection|Agents[]
-     */
-    public function getAgents(): Collection
-    {
-        return $this->agents;
-    }
-
-    public function addAgent(Agents $agent): self
-    {
-        if (!$this->agents->contains($agent)) {
-            $this->agents[] = $agent;
-        }
-
-        return $this;
-    }
-
-    public function removeAgent(Agents $agent): self
-    {
-        $this->agents->removeElement($agent);
-
-        return $this;
-    }
 
     /**
      * @return Collection|Contacts[]
@@ -304,6 +283,33 @@ class Missions
     public function removeContact(Contacts $contact): self
     {
         $this->contacts->removeElement($contact);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Agents[]
+     */
+    public function getAgents(): Collection
+    {
+        return $this->agents;
+    }
+
+    public function addAgent(Agents $agent): self
+    {
+        if (!$this->agents->contains($agent)) {
+            $this->agents[] = $agent;
+            $agent->addMission($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAgent(Agents $agent): self
+    {
+        if ($this->agents->removeElement($agent)) {
+            $agent->removeMission($this);
+        }
 
         return $this;
     }

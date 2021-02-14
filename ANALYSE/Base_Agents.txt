@@ -2,16 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\ContactsRepository;
+use App\Repository\AgentsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=ContactsRepository::class)
+ * @ORM\Entity(repositoryClass=AgentsRepository::class)
  */
-class Contacts
+class Agents
 {
     /**
      * @ORM\Id
@@ -21,10 +21,9 @@ class Contacts
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="integer")
      */
-    private $codename;
-
+    private $code;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -42,24 +41,29 @@ class Contacts
     private $birthday;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Pays::class, inversedBy="contacts")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Pays::class, inversedBy="agents")
      */
     private $pays;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Missions::class, mappedBy="contacts")
+     * @ORM\ManyToMany(targetEntity=Specialites::class, inversedBy="agents")
+     */
+    private $specialites;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Missions::class, mappedBy="agents")
      */
     private $missions;
 
     public function __construct()
     {
+        $this->specialites = new ArrayCollection();
         $this->missions = new ArrayCollection();
     }
 
     public function __toString()
     {
-        return 'Code : '.$this->getCodename().' Nom : '.$this->getLastname().' Pays : '.$this->getPays();
+        return 'Code : ' . $this->getCode() . ' Nom : ' . $this->getLastname() . ' Pays : ' . $this->getPays();
     }
 
     public function getId(): ?int
@@ -67,14 +71,14 @@ class Contacts
         return $this->id;
     }
 
-    public function getCodename(): ?string
+    public function getCode(): ?int
     {
-        return $this->codename;
+        return $this->code;
     }
 
-    public function setCodename(string $codename): self
+    public function setCode(int $code): self
     {
-        $this->codename = $codename;
+        $this->code = $code;
 
         return $this;
     }
@@ -103,6 +107,7 @@ class Contacts
         return $this;
     }
 
+
     public function getBirthday(): ?\DateTimeInterface
     {
         return $this->birthday;
@@ -128,6 +133,30 @@ class Contacts
     }
 
     /**
+     * @return Collection|Specialites[]
+     */
+    public function getSpecialites(): Collection
+    {
+        return $this->specialites;
+    }
+
+    public function addSpecialite(Specialites $specialite): self
+    {
+        if (!$this->specialites->contains($specialite)) {
+            $this->specialites[] = $specialite;
+        }
+
+        return $this;
+    }
+
+    public function removeSpecialite(Specialites $specialite): self
+    {
+        $this->specialites->removeElement($specialite);
+
+        return $this;
+    }
+
+    /**
      * @return Collection|Missions[]
      */
     public function getMissions(): Collection
@@ -139,7 +168,7 @@ class Contacts
     {
         if (!$this->missions->contains($mission)) {
             $this->missions[] = $mission;
-            $mission->addContact($this);
+            $mission->addAgent($this);
         }
 
         return $this;
@@ -148,9 +177,10 @@ class Contacts
     public function removeMission(Missions $mission): self
     {
         if ($this->missions->removeElement($mission)) {
-            $mission->removeContact($this);
+            $mission->removeAgent($this);
         }
 
         return $this;
     }
+
 }

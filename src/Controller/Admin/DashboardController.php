@@ -11,7 +11,6 @@ use App\Entity\Specialites;
 use App\Entity\Statutsmissions;
 use App\Entity\Typesmissions;
 use App\Entity\Typesplanques;
-use App\Entity\Typesusers;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -33,7 +32,7 @@ class DashboardController extends AbstractDashboardController
         // redirect to some CRUD controller
         $routeBuilder = $this->get(AdminUrlGenerator::class);
 
-        return $this->redirect($routeBuilder->setController(AgentsCrudController::class)->generateUrl());
+        return $this->redirect($routeBuilder->setController(ContactsCrudController::class)->generateUrl());
 
     }
 
@@ -53,11 +52,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Utilisateurs Connect');
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
 
-        yield MenuItem::section('Agents');
-        yield MenuItem::linkToCrud('Agents', 'fas fa-users', Agents::class);
-
         yield MenuItem::section('Contacts');
         yield MenuItem::linkToCrud('Contacts', 'fas fa-users', Contacts::class);
+
+        yield MenuItem::section('Agents');
+        yield MenuItem::linkToCrud('Agents', 'fas fa-users', Agents::class);
 
         yield MenuItem::section('Paramétrages Divers');
         yield MenuItem::linkToCrud('Pays', 'fas fa-globe', Pays::class);

@@ -38,22 +38,22 @@
                     <td>{{ mission.specialitemission }}</td>
                     <td>
                         {% for cible in mission.cibles %}
-                            {{ cible }} <br/>
+                            {{ cible.getNamecode}} : {{ cible.lastname }} <br/>
                         {% endfor %}
                     </td>
                     <td>
                         {% for planque in mission.planques %}
-                            {{ planque }} <br/>
+                            {{ planque.paysPlanque }} <br/>
                         {% endfor %}
                     </td>
                     <td>
                         {% for agent in mission.agents %}
-                            {{ agent }} <br/>
+                            {{ agent.code }} : {{ agent.lastname }} <br/>
                         {% endfor %}
                     </td>
                     <td>
                         {% for contact in mission.contacts %}
-                            {{ contact }} <br/>
+                            {{ contact.codename }} : {{ contact.lastname }} <br/>
                         {% endfor %}
                     </td>
 

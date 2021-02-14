@@ -1,0 +1,13 @@
+INSERT INTO erpmission.agents (pays_id, code, firstname, lastname, birthday) VALUES ( 5, 3245, 'Gabriel', 'Roux', '2001-12-04 23:52:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 5, 5264, 'Dominique', 'Lemaire', '1982-09-26 12:03:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 6, 1562, 'Evie', 'Khan', '1998-02-20 23:59:00');
+INSERT INTO erpmission.agents (pays_id, code, firstname, lastname, birthday) VALUES ( 6, 4568, 'Isla', 'Mitchell', '1974-12-04 23:59:00');
+INSERT INTO erpmission.agents (pays_id, code, firstname, lastname, birthday) VALUES ( 7, 7895, 'Tracy', 'Wood', '1988-12-06 10:56:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 7, 7856, 'Ian', 'Griffiths', '1969-06-19 05:59:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 8, 2356, 'Erica', 'Costin', '1983-12-19 23:59:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 8, 7895, 'Corina', 'Banu', '1997-05-26 04:59:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 9, 1236, 'Alexia', 'Willems', '1998-01-16 12:36:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 9, 4569, 'Mathis', 'Verhaeghe', '1987-02-09 05:59:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 10, 7896, 'Burnis', 'Vídalín', '1962-10-04 05:23:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 10, 8563, 'Winnie', 'Skriver', '1999-03-23 05:23:00');
+INSERT INTO erpmission.agents ( pays_id, code, firstname, lastname, birthday) VALUES ( 5, 1234, 'essai', 'essainom', '1956-12-12 23:56:00');

@@ -63,7 +63,7 @@ class Planques
 
     public function __toString()
     {
-        return $this->getCode().' '.$this->getPaysPlanque();
+        return 'Code : '.$this->getCode().' Type : '.$this->getTypeplanque().' Pays : '.$this->getPaysPlanque();
     }
 
 

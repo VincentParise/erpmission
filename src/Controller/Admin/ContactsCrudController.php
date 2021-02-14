@@ -29,8 +29,6 @@ class ContactsCrudController extends AbstractCrudController
                 ->setLabel('Prénom'),
             TextField::new('lastname')
                 ->setLabel('Nom'),
-            EmailField::new('email')
-                ->setLabel('Email'),
             DateTimeField::new('birthday')
                 ->setLabel('Date Anniversaire'),
             AssociationField::new('pays')
