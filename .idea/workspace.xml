@@ -11,37 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ERPMISSION.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ERPMISSION.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b90ec95-135e-4690-83c5-a6eb26e7665c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4b90ec95-135e-4690-83c5-a6eb26e7665c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ANALYSE/MLD.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/ANALYSE/MLD.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ANALYSE/MLD.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/ANALYSE/MLD.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classe/Rules.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Rules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/AgentsCrudController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/CiblesCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/CiblesCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ContactsCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ContactsCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MissionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Agents.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Contacts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Missions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Missions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Pays.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Pays.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Planques.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Planques.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Specialites.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Specialites.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MissionsAgentsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MissionsAgentsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AgentsRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/UserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/UserAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/agents_login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +154,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/analyse/erpmission_agents.sql" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/security" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
@@ -193,6 +165,7 @@
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\security" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\missions" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\src\Controller" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\src\Controller\Admin" />
@@ -211,7 +184,7 @@
       <workItem from="1613027567764" duration="51124000" />
       <workItem from="1613114096293" duration="17640000" />
       <workItem from="1613136646923" duration="15582000" />
-      <workItem from="1613287924221" duration="21802000" />
+      <workItem from="1613287924221" duration="29334000" />
     </task>
     <servers />
   </component>
@@ -243,10 +216,10 @@
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613136518835" />
-    <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1613305677631">
+    <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1613318862502">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="4468" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613305677631" />
+    <state x="4468" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613318862502" />
     <state x="4543" y="243" key="NewPhpClassDialog" timestamp="1613150040510">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
