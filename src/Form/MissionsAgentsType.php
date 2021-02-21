@@ -2,10 +2,8 @@
 
 namespace App\Form;
 
-
+use App\Entity\Agents;
 use App\Entity\Missions;
-use App\Entity\User;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,7 +13,7 @@ class MissionsAgentsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       /* $builder
+       $builder
 
             ->add('agents',EntityType::class,[
                 'label'=>'Agent(s)',
@@ -27,9 +25,9 @@ class MissionsAgentsType extends AbstractType
                 /*'query_builder'=> function(EntityRepository $entityRepository){
                     return $entityRepository->createQueryBuilder('u')
                         ->where('u.typeuser = 2'); //Type = 2 = Agent
-                }
-            ])
-               ;*/
+                }*/
+            ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

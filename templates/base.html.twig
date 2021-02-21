@@ -71,7 +71,11 @@
                         <a class="nav-link {% if app.request.get('_route') == 'aboutus' %}active{% endif %}" href="{{ path('aboutus') }}">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if app.request.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">Connect</a>
+                        {% if app.user %}
+                            <a class="nav-link {% if app.request.get('_route') == 'app_logout' %}active{% endif %}" href="{{ path('app_logout') }}">Déconnection</a>
+                        {% else %}
+                            <a class="nav-link {% if app.request.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">Connect</a>
+                        {% endif %}
                     </li>
                 </ul>
 

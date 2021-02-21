@@ -8,18 +8,17 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
+        all_users:
+            chain:
+                providers: [ 'app_user_provider','app_agents_provider' ]
         app_user_provider:
             entity:
-                #class: App\Entity\Agents
                 class: App\Entity\User
                 property: email
         app_agents_provider:
             entity:
                 class: App\Entity\Agents
                 property: email
-        all_users:
-            chain:
-                providers: ['app_user_provider','app_agents_provider']
 
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
@@ -27,10 +26,12 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        user_admin:
+        user:
             anonymous: true
             lazy: true
             provider: app_user_provider
+            form_login:
+                login_path: app_login
             logout:
                 path: app_logout
             guard:
@@ -42,13 +43,13 @@ security:
             anonymous: true
             lazy: true
             provider: app_agents_provider
+            form_login:
+                login_path: app_login
             logout:
                 path: app_logout_agents
             guard:
-                authenticators:
-                    - App\Security\AgentsAuthenticator
+               entry_point: App\Security\UserAuthenticator
 
-                entry_point: App\Security\AgentsAuthenticator
                 # where to redirect after logout
                 # target: app_any_route
 

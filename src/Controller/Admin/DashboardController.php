@@ -49,8 +49,8 @@ class DashboardController extends AbstractDashboardController
     {
         //yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
 
-        yield MenuItem::section('Utilisateurs Connect');
-        yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
+        //yield MenuItem::section('Utilisateurs Connect');
+        //yield MenuItem::linkToCrud('Administrateurs', 'fas fa-users', User::class);
 
         yield MenuItem::section('Contacts');
         yield MenuItem::linkToCrud('Contacts', 'fas fa-users', Contacts::class);
@@ -75,7 +75,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoRoute('Gestion Missions', 'fas fa-briefcase', 'missions_index');
 
         yield MenuItem::section('Retour');
-        yield MenuItem::linktoRoute('Retour', 'fas fa-home', 'missions_index');
+        yield MenuItem::linktoRoute('Retour', 'fas fa-home', 'home');
 
 
     }

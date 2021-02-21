@@ -77,6 +77,11 @@ class Agents implements UserInterface
         $this->missions = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return 'Nom : '.$this->getLastname().' Pays : '.$this->getPays();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

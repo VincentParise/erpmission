@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Entity\Agents;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -65,10 +66,18 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
         }
+        // Recherche de l'utilisateur dans les entity User et Agents
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+
         if (!$user) {
-            // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
+
+            //Pas d'utlisateur trouvé dans la table User
+            //Vérification dans la table Agents
+            $user = $this->entityManager->getRepository(Agents::class)->findOneBy(['email' => $credentials['email']]);
+            if (!$user) {
+                // fail authentication with a custom error
+                throw new CustomUserMessageAuthenticationException('Email could not be found.');
+            }
         }
         return $user;
     }
@@ -91,10 +100,8 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
+        return new RedirectResponse($this->urlGenerator->generate('home'));
 
-        return new RedirectResponse($this->urlGenerator->generate('missions_index'));
-
-        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl()
