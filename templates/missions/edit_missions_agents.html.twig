@@ -3,7 +3,7 @@
 {% block title %}Edition des Agents {% endblock %}
 
 {% block content %}
-    <h1>Agent(s) mission : {{ mission.codename }}</h1>
+    <h1 class="erp-family">Agent(s) mission : {{ mission.codename }}</h1>
 
     {% for message in app.flashes('alert') %}
         <div class="alert alert-info">
@@ -12,7 +12,7 @@
     {% endfor %}
 
 
-    {{ include('missions/form.html.twig', {'button_label': 'Sauvegarde'}) }}
+    {{ include('missions/form_edit_agents.html.twig', {'button_label': 'Sauvegarde'}) }}
     <a href="{{ path('missions_index') }}" class="btn btn-primary btn-sm">Retour Liste</a>
 
 {% endblock %}

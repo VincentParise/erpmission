@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Missions{% endblock %}
+{% block title %}Nouvelle Mission{% endblock %}
 
 {% block content %}
-    <h1>Create new Missions</h1>
+    <h1 class="erp-family">Création Nouvelle Mission</h1>
 
     {{ include('missions/form.html.twig') }}
 
-    <a href="{{ path('missions_index') }}">back to list</a>
+    <a href="{{ path('missions_index') }}" class="btn btn-primary btn-sm mr-1 mb-1 erp-family">Retour Liste</a>
 {% endblock %}

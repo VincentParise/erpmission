@@ -3,10 +3,10 @@
 {% block title %}Liste des Missions{% endblock %}
 
 {% block content %}
-    <a href="{{ path('home') }}" class="btn btn-primary">Retour</a>
+    <a href="{{ path('home') }}" class="btn btn-primary erp-family">Retour</a>
     <hr>
-    <h1>Liste des Missions</h1>
-    <div class="table-responsive-md">
+    <h1 class="erp-family">Liste des Missions</h1>
+    <div class="table-responsive-md erp-family">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -69,12 +69,12 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="7">no records found</td>
+                    <td colspan="7">Pas de missions trouvés</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
 
-    <a href="{{ path('missions_new') }}" class="btn btn-info">Nouvelle Mission</a>
+    <a href="{{ path('missions_new') }}" class="btn btn-info erp-family">Nouvelle Mission</a>
 {% endblock %}

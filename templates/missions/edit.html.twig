@@ -3,7 +3,7 @@
 {% block title %}Création Missions{% endblock %}
 
 {% block content %}
-    <h1>Création nouvelle Mission</h1>
+    <h1 class="erp-family">Création nouvelle Mission</h1>
 
     {% for message in app.flashes('alert') %}
         <div class="alert alert-info">
@@ -11,13 +11,13 @@
         </div>
     {% endfor %}
 
-        {{ include('missions/form.html.twig', {'button_label': 'Sauvegarder'}) }}
+        {{ include('missions/form_edit.html.twig', {'button_label': 'Sauvegarder'}) }}
 
 
         {{ include('missions/_delete_form.html.twig') }}
 
 
-    <a href="{{ path('missions_index') }}" class="btn btn-primary btn-sm mt-1">Retour liste</a>
+    <a href="{{ path('missions_index') }}" class="btn btn-primary btn-sm mt-1 erp-family" >Retour liste</a>
 
 
 

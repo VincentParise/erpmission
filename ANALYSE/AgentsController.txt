@@ -3,30 +3,37 @@
 namespace App\Controller;
 
 use App\Repository\MissionsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+
+class AgentsController extends AbstractController
 {
+    private $entityManager;
+
     /**
-     * @Route("/", name="home")
+     * MissionsController constructor.
+     * @param $entityManager
      */
-    public function index(): Response
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        return $this->render('home/index.html.twig');
+        $this->entityManager = $entityManager;
     }
 
     /**
-     * @Route("/agentsmissions", name="agentsmissions")
+     * @Route("/agents", name="agents")
      * @param MissionsRepository $missionsRepository
      * @return Response
      */
-    public function agentsMissions(MissionsRepository $missionsRepository): Response
+    public function index(MissionsRepository $missionsRepository): Response
     {
+        //dd($this->getUser()->getMissions());
 
         return $this->render('missions/index.html.twig', [
             'missions' => $this->getUser()->getMissions(),
         ]);
     }
+
 }
