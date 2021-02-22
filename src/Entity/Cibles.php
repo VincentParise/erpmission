@@ -62,7 +62,7 @@ class Cibles
 
     public function __toString()
     {
-        return $this->getFirstname().' '.$this->getLastname();
+        return $this->getFirstname().' '.$this->getLastname() . ' : '.$this->getPayscible();
     }
 
     public function getId(): ?int

@@ -3,6 +3,7 @@
 {% block title %}Liste des Missions{% endblock %}
 
 {% block content %}
+
     <a href="{{ path('home') }}" class="btn btn-primary erp-family">Retour</a>
     <hr>
     <h1 class="erp-family">Liste des Missions</h1>
@@ -43,10 +44,11 @@
                     </td>
                     <td>
                         {% for planque in mission.planques %}
-                            {{ planque.paysPlanque }} <br/>
+                                {{ planque.code }} : {{ planque.paysPlanque }} <br/>
                         {% endfor %}
                     </td>
                     <td>
+
                         {% for agent in mission.agents %}
                             {{ agent.code }} : {{ agent.lastname }} <br/>
                         {% endfor %}
@@ -63,7 +65,7 @@
                         <a href="{{ path('missions_edit', {'id': mission.id}) }}" class="btn btn-info btn-sm mb-1">edit</a><br/>
                         <a href="{{ path('missions_planques', {'id': mission.id}) }}" class="btn btn-secondary btn-sm mb-1">Planques</a><br/>
                         <a href="{{ path('missions_cibles', {'id': mission.id}) }}" class="btn btn-secondary btn-sm mb-1">Cibles</a><br/>
-                        <a href="{{ path('missions_agents', {'id': mission.id}) }}" class="btn btn-secondary btn-sm mb-1">Agents</a><br/>
+                        <a href="{{ path('agents_missions', {'id': mission.id}) }}" class="btn btn-secondary btn-sm mb-1">Agents</a><br/>
                         <a href="{{ path('missions_contacts', {'id': mission.id}) }}" class="btn btn-secondary btn-sm mb-1">Contacts</a><br/>
                     </td>
                 </tr>

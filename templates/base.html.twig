@@ -85,18 +85,18 @@
     </nav>
 </header>
 
-<main class="container mt-5 ">
+<main>
 
-        {% block content %}
+    <div class="container mt-5 mb-5">
+      {% block content %}
+      {% endblock %}
+    </div>
 
-        {% endblock %}
+    <footer class="d-md-flex justify-content-center align-items-center erp-family">
+        <span>@Copyright 2021 - KGB</span>
+    </footer>
 
 </main><!-- /.container -->
-
-<footer class="d-md-flex justify-content-center align-items-center erp-family">
-    <span>@Copyright 2021 - KGB</span>
-</footer>
-
 
 </body>
 {% block javascripts %}

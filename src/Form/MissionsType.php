@@ -2,15 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\Cibles;
+
 use App\Entity\Missions;
-use App\Entity\Planques;
-use App\Entity\User;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,8 +17,12 @@ class MissionsType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('codename')
-            ->add('datestart')
-            ->add('dateend')
+            ->add('datestart',DateType::class,[
+                'widget'=>'single_text'
+            ])
+            ->add('dateend',DateType::class,[
+                'widget'=>'single_text'
+            ])
             ->add('typemission')
             ->add('statutmission')
             ->add('paysmission')

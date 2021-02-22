@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Contacts;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +21,9 @@ class ContactsType extends AbstractType
             ->add('codename')
             ->add('firstname')
             ->add('lastname')
-            ->add('birthday')
+            ->add('birthday',DateType::class,[
+                'widget' => 'single_text',
+            ])
             ->add('pays')
         ;
     }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Agents;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +20,9 @@ class AgentsType extends AbstractType
             ->add('code')
             ->add('firstname')
             ->add('lastname')
-            ->add('birthday')
+            ->add('birthday',DateType::class,[
+                'widget'=>'single_text'
+            ])
             ->add('pays')
             ->add('specialites')
         ;

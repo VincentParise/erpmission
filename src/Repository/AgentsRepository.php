@@ -5,9 +5,6 @@ namespace App\Repository;
 use App\Entity\Agents;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method Agents|null find($id, $lockMode = null, $lockVersion = null)
@@ -15,25 +12,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @method Agents[]    findAll()
  * @method Agents[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AgentsRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
+class AgentsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Agents::class);
-    }
-
-    /**
-     * Used to upgrade (rehash) the user's password automatically over time.
-     */
-    public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
-    {
-        if (!$user instanceof Agents) {
-            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
-        }
-
-        $user->setPassword($newEncodedPassword);
-        $this->_em->persist($user);
-        $this->_em->flush();
     }
 
     // /**

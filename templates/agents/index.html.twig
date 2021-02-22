@@ -6,7 +6,7 @@
     <h1 class="erp-family">Liste des Agents</h1>
     <a href="{{ path('home') }}" class="btn btn-primary erp-family">Retour</a>
     <hr>
-<div class="table-responsive-md erp-family">
+<div class="table-responsive-md erp-family mb-5">
     <table class="mt-5 table">
         <thead>
             <tr>
@@ -28,11 +28,11 @@
                 <td>{{ agent.lastname }}</td>
                 <td>{{ agent.email }}</td>
                 {# <td>{{ agent.roles ? agent.roles|json_encode : '' }}</td> #}
-                <td>{{ agent.birthday ? agent.birthday|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ agent.birthday ? agent.birthday|date('Y-m-d') : '' }}</td>
                 <td>{{ agent.pays }}</td>
                 <td>
                     {% for specialite in agent.specialites %}
-                        {{ specialite }}
+                        {{ specialite }} <br/>
                     {% endfor %}
                 </td>
                <td>

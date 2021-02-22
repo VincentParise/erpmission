@@ -194,7 +194,7 @@ class MissionsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/agents", name="missions_agents", methods={"GET","POST"})
+     * @Route("/{id}/agents", name="agents_missions", methods={"GET","POST"})
      * @param Request $request
      * @param Missions $mission
      * @param Rules $rules
@@ -217,7 +217,7 @@ class MissionsController extends AbstractController
             // On appelle le service Rules
             if (!$rules->ruleAgentsSpecialites($specialite,$agents)) {
                 $this->addFlash('alert','Au moins 1 agent doit avoir la spécialité de la mission : '.$mission->getSpecialitemission());
-                return $this->redirectToRoute('missions_agents',['id'=>$mission->getId()]);
+                return $this->redirectToRoute('agents_missions',['id'=>$mission->getId()]);
             }
 
             // On vérifie la règle des nationalités.
@@ -225,10 +225,11 @@ class MissionsController extends AbstractController
                 // On récupère les nationalités des cibles dans une chaine de caractère.
                 $nationaliteCibles=$rules->ruleNatCibles($cibles);
                 $this->addFlash('alert','Le(s) agent(s) ne peuvent pas avoir la même nationalité que le(s) cible(s) : '.$nationaliteCibles);
-                return $this->redirectToRoute('missions_agents',['id'=>$mission->getId()]);
+                return $this->redirectToRoute('agents_missions',['id'=>$mission->getId()]);
             }
 
-            $this->entityManager->flush();
+            $this->getDoctrine()->getManager()->flush();
+            //dd($this->getDoctrine()->getManager()->flush());
 
             return $this->redirectToRoute('missions_index');
         }
@@ -265,7 +266,7 @@ class MissionsController extends AbstractController
                 return $this->redirectToRoute('missions_contacts',['id'=>$mission->getId()]);
             }
 
-            $this->entityManager->flush();
+            $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('missions_index');
         }

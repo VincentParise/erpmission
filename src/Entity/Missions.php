@@ -79,25 +79,22 @@ class Missions
      */
     private $planques;
 
-
-
     /**
      * @ORM\ManyToMany(targetEntity=Contacts::class, inversedBy="missions")
      */
     private $contacts;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Agents::class, mappedBy="missions")
+     * @ORM\ManyToMany(targetEntity=Agents::class, inversedBy="missions")
      */
     private $agents;
-
 
     public function __construct()
     {
         $this->cibles = new ArrayCollection();
         $this->planques = new ArrayCollection();
-        $this->agents = new ArrayCollection();
         $this->contacts = new ArrayCollection();
+        $this->agents = new ArrayCollection();
 
     }
 
@@ -299,7 +296,6 @@ class Missions
     {
         if (!$this->agents->contains($agent)) {
             $this->agents[] = $agent;
-            $agent->addMission($this);
         }
 
         return $this;
@@ -307,11 +303,10 @@ class Missions
 
     public function removeAgent(Agents $agent): self
     {
-        if ($this->agents->removeElement($agent)) {
-            $agent->removeMission($this);
-        }
+        $this->agents->removeElement($agent);
 
         return $this;
     }
+
 
 }

@@ -63,6 +63,7 @@ class Pays
         $this->missions = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->agents = new ArrayCollection();
+
     }
 
     public function __toString() {
@@ -247,4 +248,5 @@ class Pays
 
         return $this;
     }
+
 }

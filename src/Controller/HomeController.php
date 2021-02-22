@@ -17,16 +17,5 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig');
     }
 
-    /**
-     * @Route("/agentsmissions", name="agentsmissions")
-     * @param MissionsRepository $missionsRepository
-     * @return Response
-     */
-    public function agentsMissions(MissionsRepository $missionsRepository): Response
-    {
 
-        return $this->render('missions/index.html.twig', [
-            'missions' => $this->getUser()->getMissions(),
-        ]);
-    }
 }

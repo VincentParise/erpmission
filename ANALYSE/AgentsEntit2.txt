@@ -67,7 +67,7 @@ class Agents implements UserInterface
     private $specialites;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Missions::class, mappedBy="agents")
+     * @ORM\ManyToMany(targetEntity=Missions::class, inversedBy="agents")
      */
     private $missions;
 
@@ -79,7 +79,7 @@ class Agents implements UserInterface
 
     public function __toString()
     {
-        return ' Nom : '.$this->getLastname().' Pays : '.$this->getPays();
+        return 'Nom : '.$this->getLastname().' Pays : '.$this->getPays();
     }
 
     public function getId(): ?int
@@ -163,9 +163,6 @@ class Agents implements UserInterface
         // $this->plainPassword = null;
     }
 
-
-
-
     public function getCode(): ?int
     {
         return $this->code;
@@ -214,12 +211,12 @@ class Agents implements UserInterface
         return $this;
     }
 
-    public function getPays(): ?pays
+    public function getPays(): ?Pays
     {
         return $this->pays;
     }
 
-    public function setPays(?pays $pays): self
+    public function setPays(?Pays $pays): self
     {
         $this->pays = $pays;
 

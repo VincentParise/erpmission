@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1 class="erp-family">Agent : <small>{{ agent.code }}</small></h1>
-<div class="table-responsive-md erp-family mt-5">
+<div class="table-responsive-md erp-family mt-5 mb-5">
     <table class="table table-striped table-bordered">
         <tbody>
         <tr>
@@ -12,11 +12,11 @@
             <td>{{ agent.code }}</td>
         </tr>
         <tr>
-            <th>Firstname</th>
+            <th>Prénom</th>
             <td>{{ agent.firstname }}</td>
         </tr>
         <tr>
-            <th>Lastname</th>
+            <th>Nom</th>
             <td>{{ agent.lastname }}</td>
         </tr>
         <tr>
@@ -24,7 +24,7 @@
             <td>{{ agent.email }}</td>
         </tr>
         <tr>
-            <th>Birthday</th>
+            <th>Date de Naissance</th>
             <td>{{ agent.birthday ? agent.birthday|date('Y-m-d H:i:s') : '' }}</td>
         </tr>
         <tr>

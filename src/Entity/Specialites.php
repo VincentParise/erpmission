@@ -38,6 +38,7 @@ class Specialites
     {
         $this->missions = new ArrayCollection();
         $this->agents = new ArrayCollection();
+
     }
 
     public function __toString()
