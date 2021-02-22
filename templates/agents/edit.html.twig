@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Agents{% endblock %}
+{% block title %}Edition Agent{% endblock %}
 
-{% block body %}
-    <h1>Edit Agents</h1>
+{% block content %}
+    <h1 class="erp-family">Edition Agent</h1>
+    {% for message in app.flashes('alert') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-    {{ include('agents/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('agents/form_edit.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('agents_index') }}">back to list</a>
+    <a href="{{ path('agents_index') }}" class="btn btn-primary btn-sm mt-1 mb-1 erp-family">Retour Liste</a>
 
     {{ include('agents/_delete_form.html.twig') }}
 {% endblock %}

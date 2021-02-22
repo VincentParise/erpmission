@@ -6,11 +6,14 @@ use App\Entity\Agents;
 use App\Form\AgentsType;
 use App\Repository\AgentsRepository;
 use App\Repository\MissionsRepository;
+use App\Services\Rules;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/agents")
@@ -42,14 +45,30 @@ class AgentsController extends AbstractController
 
     /**
      * @Route("/new", name="agents_new", methods={"GET","POST"})
+     * @param Request $request
+     * @param Rules $rules
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request,Rules $rules,UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $agent = new Agents();
         $form = $this->createForm(AgentsType::class, $agent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //Récupération objet tableaux des spécialités de l'agent
+            $specialites=$form->get('specialites')->getData();
+            //On test si l'agent a au moins une spécialités.
+            if (empty($rules->ruleSpecialitesAgents($specialites))){
+                $this->addFlash('alert','L\'agent doit avoir au moins une spécialitée');
+                return $this->redirectToRoute('agents_new');
+            }
+
+            // On encode le mot de passe avant le flush base de données
+            $password=$passwordEncoder->encodePassword($agent,$form->get('password')->getData());
+            $agent->setPassword($password);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($agent);
             $entityManager->flush();
@@ -75,13 +94,30 @@ class AgentsController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="agents_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Agents $agent
+     * @param Rules $rules
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
      */
-    public function edit(Request $request, Agents $agent): Response
+    public function edit(Request $request, Agents $agent,Rules $rules,UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $form = $this->createForm(AgentsType::class, $agent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //Récupération objet tableaux des spécialités de l'agent
+            $specialites=$form->get('specialites')->getData();
+            //On test si l'agent a au moins une spécialités.
+            if (empty($rules->ruleSpecialitesAgents($specialites))){
+                $this->addFlash('alert','L\'agent doit avoir au moins une spécialitée');
+                return $this->redirectToRoute('agents_edit',['id'=>$agent->getId()]);
+            }
+
+            // On encode le mot de passe avant le flush base de données
+            $password=$passwordEncoder->encodePassword($agent,$form->get('password')->getData());
+            $agent->setPassword($password);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('agents_index');

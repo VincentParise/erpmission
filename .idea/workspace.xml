@@ -11,22 +11,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/missions/form_edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/missions/form_edit_planques.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/agents/form_edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/agents/form_new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AgentsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AgentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AgentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AgentsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AgentsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Rules.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Rules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/agents/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/agents/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/agents/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/agents/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/agents/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/agents/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/agents/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/agents/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/agents/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/agents/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/missions/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/delete_planques_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/delete_planques_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_planques.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_planques.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/missions/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/agents_login.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +167,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/missions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SYMFONY/laboutiquefrancaise" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
@@ -178,6 +178,7 @@
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\agents" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\missions" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\security" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\src\Controller" />
@@ -200,7 +201,7 @@
       <workItem from="1613287924221" duration="29334000" />
       <workItem from="1613322959107" duration="41000" />
       <workItem from="1613895324532" duration="11214000" />
-      <workItem from="1613976624958" duration="4395000" />
+      <workItem from="1613976624958" duration="10463000" />
     </task>
     <servers />
   </component>
@@ -232,14 +233,15 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="3162" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613905583823" />
-    <state x="2610" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1613906699031">
+    <state x="2610" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1613985176659">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2610" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613906699031" />
+    <state x="2610" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613985176659" />
     <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613136518835" />
-    <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1613318862502">
-      <screen x="3840" y="0" width="1920" height="1040" />
+    <state x="2548" y="271" key="FileChooserDialogImpl" timestamp="1613986246690">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="2548" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613986246690" />
     <state x="4468" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613318862502" />
     <state x="4543" y="243" key="NewPhpClassDialog" timestamp="1613150040510">
       <screen x="3840" y="0" width="1920" height="1040" />

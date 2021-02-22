@@ -130,4 +130,17 @@ class Rules
 
     }
 
+    /*
+     * Retourne le tableau des libelles des spécialités
+     */
+    public function ruleSpecialitesAgents($specialites) {
+        $tabSpecialites=[];
+
+        foreach($specialites as $element){
+            $tabSpecialites[]=$element->getLibelle();
+        }
+
+        return $tabSpecialites;
+    }
+
 }

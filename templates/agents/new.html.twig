@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Agents{% endblock %}
+{% block title %}Nouvel Agent{% endblock %}
 
-{% block body %}
-    <h1>Create new Agents</h1>
+{% block content %}
+    <h1 class="erp-family">Création nouvel Agent</h1>
 
-    {{ include('agents/_form.html.twig') }}
+    {% for message in app.flashes('alert') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-    <a href="{{ path('agents_index') }}">back to list</a>
+    {{ include('agents/form_new.html.twig') }}
+
+    <a href="{{ path('agents_index') }}" class="btn btn-primary btn-sm mr-1 mb-1 erp-family">Retour Liste</a>
 {% endblock %}
