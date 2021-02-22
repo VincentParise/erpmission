@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\Agents;
+use App\Entity\Contacts;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -68,15 +69,17 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         }
         // Recherche de l'utilisateur dans les entity User et Agents
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
-
+        //Si Pas d'utlisateur trouvé dans la table User
         if (!$user) {
-
-            //Pas d'utlisateur trouvé dans la table User
             //Vérification dans la table Agents
             $user = $this->entityManager->getRepository(Agents::class)->findOneBy(['email' => $credentials['email']]);
             if (!$user) {
-                // fail authentication with a custom error
-                throw new CustomUserMessageAuthenticationException('Email could not be found.');
+                //Vérification dans la table Contacts
+                $user = $this->entityManager->getRepository(Contacts::class)->findOneBy(['email' => $credentials['email']]);
+                if (!$user) {
+                    // fail authentication with a custom error
+                    throw new CustomUserMessageAuthenticationException('Utilisateur Email non trouvé');
+                }
             }
         }
         return $user;

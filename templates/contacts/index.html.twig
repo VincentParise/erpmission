@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block content %}
+    <h1 class="erp-family">Lise des Contacts</h1>
+    <a href="{{ path('home') }}" class="btn btn-primary erp-family">Retour</a>
+    <hr>
+<div class="table-responsive-md erp-family">
+    <table class="mt-5 table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Pays</th>
+                <th>Date de Naissance</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.codename }}</td>
+                <td>{{ contact.firstname }}</td>
+                <td>{{ contact.lastname }}</td>
+                <td>{{ contact.email }}</td>
+                {# <td>{{ contact.roles ? contact.roles|json_encode : '' }}</td> #}
+                <td>{{ contact.pays }}</td>
+                <td>{{ contact.birthday ? contact.birthday|date('Y-m-d H:i:s') : '' }}</td>
+
+                <td>
+                    <a href="{{ path('contacts_show', {'id': contact.id}) }}" class="btn btn-info btn-sm mb-1">show</a><br/>
+                    <a href="{{ path('contacts_edit', {'id': contact.id}) }}" class="btn btn-info btn-sm mb-1">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Pas de contacts trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <a href="{{ path('contacts_new') }}" class="btn btn-info erp-family">Nouveau contact</a>
+{% endblock %}

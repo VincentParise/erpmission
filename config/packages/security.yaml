@@ -4,13 +4,15 @@ security:
             algorithm: auto
         App\Entity\Agents:
             algorithm: auto
+        App\Entity\Contacts:
+            algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         all_users:
             chain:
-                providers: [ 'app_user_provider','app_agents_provider' ]
+                providers: [ 'app_user_provider','app_agents_provider','app_contacts_provider' ]
         app_user_provider:
             entity:
                 class: App\Entity\User
@@ -19,7 +21,10 @@ security:
             entity:
                 class: App\Entity\Agents
                 property: email
-
+        app_contacts_provider:
+            entity:
+                class: App\Entity\Contacts
+                property: email
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
@@ -50,6 +55,16 @@ security:
             guard:
                entry_point: App\Security\UserAuthenticator
 
+        contacts:
+            anonymous: true
+            lazy: true
+            provider: app_contacts_provider
+            form_login:
+                login_path: app_login
+            logout:
+                path: app_logout_contacts
+            guard:
+                entry_point: App\Security\UserAuthenticator
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -64,4 +79,5 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/agents, roles: ROLE_ADMIN }
+        -  {path: ^/contacts, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

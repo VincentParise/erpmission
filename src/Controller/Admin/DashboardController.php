@@ -32,7 +32,7 @@ class DashboardController extends AbstractDashboardController
         // redirect to some CRUD controller
         $routeBuilder = $this->get(AdminUrlGenerator::class);
 
-        return $this->redirect($routeBuilder->setController(ContactsCrudController::class)->generateUrl());
+        return $this->redirect($routeBuilder->setController(CiblesCrudController::class)->generateUrl());
 
     }
 
@@ -51,10 +51,8 @@ class DashboardController extends AbstractDashboardController
 
         //yield MenuItem::section('Utilisateurs Connect');
         //yield MenuItem::linkToCrud('Administrateurs', 'fas fa-users', User::class);
-
-        yield MenuItem::section('Contacts');
-        yield MenuItem::linkToCrud('Contacts', 'fas fa-users', Contacts::class);
-
+        //yield MenuItem::section('Contacts');
+        //yield MenuItem::linkToCrud('Contacts', 'fas fa-users', Contacts::class);
         //yield MenuItem::section('Agents');
         //yield MenuItem::linkToCrud('Agents', 'fas fa-users', Agents::class);
 
@@ -71,8 +69,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Les Cibles');
         yield MenuItem::linkToCrud('Cibles', 'fas fa-bullseye', Cibles::class);
 
-        yield MenuItem::section('Gestion Des Missions');
-        yield MenuItem::linktoRoute('Gestion Missions', 'fas fa-briefcase', 'missions_index');
+        //yield MenuItem::section('Gestion Des Missions');
+        //yield MenuItem::linktoRoute('Gestion Missions', 'fas fa-briefcase', 'missions_index');
 
         yield MenuItem::section('Retour');
         yield MenuItem::linktoRoute('Retour', 'fas fa-home', 'home');

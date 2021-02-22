@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block content %}
+    <h1 class="erp-family">Contact : <small>{{ contact.codename }}</small></h1>
+
+<div class="table-responsive-md erp-family mt-5">
+    <table class="table table-striped table-bordered">
+        <tbody>
+            <tr>
+                <th>Code</th>
+                <td>{{ contact.codename }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ contact.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ contact.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ contact.email }}</td>
+            </tr>
+            <tr>
+                <th>Date de Naissance</th>
+                <td>{{ contact.birthday ? contact.birthday|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <a href="{{ path('contacts_index') }}" class="btn btn-primary btn-sm mr-1 mb-1 erp-family">Retour Liste</a>
+
+    <a href="{{ path('contacts_edit', {'id': contact.id}) }}" class="btn btn-info btn-sm mb-1 erp-family">Editer</a>
+
+    {{ include('contacts/_delete_form.html.twig') }}
+{% endblock %}

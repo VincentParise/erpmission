@@ -1,0 +1,47 @@
+<div class="erp-family">
+    {{ form_start(form) }}
+
+    <div class="row mb-3 align-items-center">
+        <div class="col form-group d-flex d-inline">
+            <div class="px-2 align-self-center">{{ form_label(form.codename,'Code') }}</div>
+            <div>{{ form_widget(form.codename) }}</div>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-3 align-items-center">
+        <div class="col form-group d-flex d-inline">
+            <div class="px-2 align-self-center">{{ form_label(form.email,'Email') }}</div>
+            <div>{{ form_widget(form.email) }}</div>
+        </div>
+        <div class="col form-group d-flex d-inline">
+            <div class="px-2 align-self-center">{{ form_label(form.password,'Password') }}</div>
+            <div>{{ form_widget(form.password) }}</div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row mb-3 align-items-center">
+        <div class="col form-group d-flex d-inline">
+            <div class="px-2 align-self-center">{{ form_label(form.firstname,'Prénom') }}</div>
+            <div>{{ form_widget(form.firstname) }}</div>
+        </div>
+        <div class="col form-group d-flex d-inline">
+            <div class="px-2 align-self-center">{{ form_label(form.lastname,'Nom') }}</div>
+            <div>{{ form_widget(form.lastname) }}</div>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-3 align-items-center">
+        <div class="col form-group d-flex d-inline">
+            <div class="px-2 align-self-center">{{ form_label(form.birthday,'Date anniversaire') }}</div>
+            <div>{{ form_widget(form.birthday) }}</div>
+        </div>
+        <div class="col form-group d-flex d-inline">
+            <div class="px-2 align-self-center">{{ form_label(form.pays,'Pays') }}</div>
+            <div>{{ form_widget(form.pays) }}</div>
+        </div>
+    </div>
+
+    <button class="btn btn-info btn-sm mt-1 mb-1">{{ button_label|default('Sauvegarder') }}</button>
+
+{{ form_end(form) }}
