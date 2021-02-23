@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace Agent{% endblock %}
+
+{% block content %}
+<div class="erp-family">
+    <h1>Missions agent {{ app.user.lastname }}</h1>
+    <div>
+
+        <form class="form-control js-filter">
+            <h4>Filtrage</h4>
+            <div class="m-1">
+                <label for="statut-select">Statut :</label>
+                <select name="statut" id="statut-select">
+                    <option value="" ></option>
+                    {% for statutsmission in statutsmissions %}
+                        <option value="{{ statutsmission }}" class="js-filter">{{ statutsmission }}</option>
+                    {% endfor %}
+                </select><br/>
+            </div>
+            <div class="m-1">
+                <label for="pays-select">Pays :</label>
+                <select name="pays" id="pays-select">
+                    <option value="" ></option>
+                    {% for paysmission in paysmissions %}
+                          <option value="{{ paysmission }}" class="js-filter">{{ paysmission }}</option>
+                    {% endfor %}
+                </select><br/>
+            </div>
+            <div class="m-1">
+                <label for="specialites-select">Specialité :</label>
+                <select name="specialites" id="specialites-select">
+                    <option value="" ></option>
+                    {% for specialitesmission in specialitesmissions %}
+                        <option value="{{ specialitesmission }}" class="js-filter">{{ specialitesmission }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+
+    </div>
+    <div class="d-flex flex-wrap" id="content">
+        {% include 'espaceagents/content_missions.html.twig' %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        const select=document.querySelector('.js-filter')
+        select.addEventListener('change',onChangeValueList)
+
+        function onChangeValueList(event){
+            // On intercepte le changement
+            // On Récupère les données du formulaire.
+            const Form = new FormData(select)
+
+            // On fabrique la querystring : après le poitn d'interrogation
+            const Params=new URLSearchParams()
+
+            // On boucle sur chaque clé du formulaire key avec ces valeurs : ici pays et Specialites
+            Form.forEach((value,key)=>{
+                Params.append(key,value)
+            })
+
+            // On crée l'url active
+            const Url = new URL(window.location.href)
+
+            // On lance la requête Ajax avec fetch
+            fetch(Url.pathname + '?' + Params.toString() + '&ajax=1',{
+                headers:{
+                    "X-Requested-With":"XMLHttpRequest"
+                }
+            }).then(response =>
+                response.json()
+            ).then(data =>{
+                const content = document.querySelector('#content')
+                content.innerHTML=data.content
+                //console.log(data.content)
+
+                //On met à jour l'URL
+                //history.pushState({},null,Url.pathname+'?'+Params.toString())
+
+            }).catch(e=> alert(e))
+
+        }
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+
+    {% for mission in missions %}
+        <div class="card m-1" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ mission.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ mission.codename }}</h6>
+                <p class="card-text">{{ mission.description }}</p>
+                <p class="card-text">Spécialité : {{ mission.getSpecialitemission }}</p>
+                <p class="card-text">Pays : {{ mission.getPaysmission }}</p>
+                <a href="#" class="btn btn-primary btn-sm">Détail Mission</a>
+            </div>
+        </div>
+  {% endfor %}
+
+

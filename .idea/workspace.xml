@@ -11,61 +11,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b90ec95-135e-4690-83c5-a6eb26e7665c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4b90ec95-135e-4690-83c5-a6eb26e7665c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/espaceagents/content_missions.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ANALYSE/erpmission_agents.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ANALYSE/erpmission_agents.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210145026.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210145833.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210150735.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210151631.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210152021.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210152356.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210152647.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210163538.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210164249.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210210165330.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210211133245.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210211151250.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210212124037.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210212130219.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210212130554.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210212130746.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214122625.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214123458.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214124309.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214124348.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214130337.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214134959.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214141135.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214141214.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210214141642.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210222100320.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/erpmission.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/erpmission.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AgentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AgentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ContactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ContactsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MissionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Agents.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Cibles.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Cibles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Contacts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Missions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Missions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Pays.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Pays.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Specialites.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Specialites.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AgentsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AgentsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ContactsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MissionsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MissionsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AgentsRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/AgentsAuthenticator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/agents/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/agents/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/agents/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/agents/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/agents/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/agents/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/MissionsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MissionsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PaysRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PaysRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/SpecialitesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SpecialitesRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/StatutsmissionsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/StatutsmissionsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/UserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/UserAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Rules.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Rules.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contacts/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contacts/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contacts/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contacts/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contacts/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contacts/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contacts/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contacts/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_agents.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_agents.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_planques.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_planques.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/edit_missions_contacts.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/edit_missions_contacts.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,10 +167,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/analyse/AgentsEntity.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SYMFONY/laboutiquefrancaise" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -217,11 +178,11 @@
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\espaceagents" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\contacts" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\agents" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\missions" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\security" />
-      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\src\Controller" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -240,7 +201,9 @@
       <workItem from="1613287924221" duration="29334000" />
       <workItem from="1613322959107" duration="41000" />
       <workItem from="1613895324532" duration="11214000" />
-      <workItem from="1613976624958" duration="32391000" />
+      <workItem from="1613976624958" duration="33231000" />
+      <workItem from="1614063429725" duration="14847000" />
+      <workItem from="1614083806279" duration="14964000" />
     </task>
     <servers />
   </component>
@@ -277,23 +240,24 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="3162" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613905583823" />
-    <state x="4530" y="275" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614014677485">
+    <state x="4643" y="259" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614066480037">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="4643" y="259" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613987962936" />
+    <state x="4643" y="259" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1614066480037" />
     <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614014677485" />
-    <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1614006054873">
+    <state x="4404" y="243" key="FileChooserDialogImpl" timestamp="1614076649731">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="2548" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613986246690" />
+    <state x="4404" y="243" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1614076649731" />
     <state x="4468" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614006054873" />
     <state x="4543" y="243" key="NewPhpClassDialog" timestamp="1613150040510">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4543" y="243" key="NewPhpClassDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613150040510" />
-    <state x="4301" y="165" key="SettingsEditor" timestamp="1613138105156">
+    <state x="4022" y="91" key="SettingsEditor" timestamp="1614083788163">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
+    <state x="4022" y="91" key="SettingsEditor/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1614083788163" />
     <state x="4301" y="165" key="SettingsEditor/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613138105156" />
     <state x="4662" y="401" width="316" height="246" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1614014157324">
       <screen x="3840" y="0" width="1920" height="1040" />

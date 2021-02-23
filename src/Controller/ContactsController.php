@@ -43,7 +43,8 @@ class ContactsController extends AbstractController
             // On encode le mot de passe avant le flush base de données
             $password=$passwordEncoder->encodePassword($contact,$form->get('password')->getData());
             $contact->setPassword($password);
-
+            // Role = 'ROLE_CONTACT'
+            $contact->setRoles(["ROLE_CONTACT"]);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contact);

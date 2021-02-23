@@ -68,6 +68,8 @@ class AgentsController extends AbstractController
             // On encode le mot de passe avant le flush base de données
             $password=$passwordEncoder->encodePassword($agent,$form->get('password')->getData());
             $agent->setPassword($password);
+            // Role = 'ROLE_AGENT'
+            $agent->setRoles(["ROLE_AGENT"]);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($agent);

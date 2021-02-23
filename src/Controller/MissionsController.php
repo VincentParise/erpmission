@@ -71,7 +71,6 @@ class MissionsController extends AbstractController
      */
     public function show(Missions $mission): Response
     {
-
         return $this->render('missions/show.html.twig', [
             'mission' => $mission,
         ]);
@@ -91,28 +90,66 @@ class MissionsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère le champ pays de la mission
-            $paysMission=$form->get('paysmission')->getData()->getLibelle();
-            //Recupération des libelle pays des planques de la mission.
-            $paysplanques=$mission->getPlanques();
-            //On test si le pays de la mission fait bien parti des pays de(s) planques
-            if (!$rules->rulePlanquesPays($paysMission,$paysplanques)){
-                return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+
+            // Vérification pour passer changer l'état de la mission :
+            // Récupération Id, Statut, Pays, Planques Mission en cours  :
+            $etatMission=$mission->getStatutmission()->getId();
+            $statutMission=$mission->getStatutmission()->getLibelle();
+            $countryMission=$mission->getPaysmission()->getLibelle();
+            $planques=$mission->getPlanques();
+            // Si Etat Mission <> de préparation :
+            if ($etatMission!=1){
+
+                // -1 Présence Agent Cible et Contact
+                $agents=$mission->getAgents();
+                $contacts=$mission->getContacts();
+                $cibles=$mission->getCibles();
+                if (!$rules->verifAgentsContactsCibles($agents,$contacts,$cibles,$statutMission)) {
+                    return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+                }
+                // -2 Vérification que Cibles et Agents ont la même nationailité:
+                if (!$rules->ruleCiblesAgentsNat($cibles,$agents)) {
+                    $this->addFlash('alert','Le(s) cible(s) ne peuvent pas avoir la même nationalité que le(s) agent(s).');
+                    return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+                }
+                // -3 Vérification si le pays mission = pays du contact
+                if (!$rules->ruleContactsPays($countryMission,$contacts)){
+                    $this->addFlash('alert','Les contacts doivent être du même pays que la mission : '.$mission->getPaysmission()->getLibelle());
+                    return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+                }
+                // -4 Vérification Planque même pays que mission
+                if (!$rules->rulePlanquesPays($countryMission,$planques)){
+                    return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+                }
+                // -5 Vérification si la specialite de la mission correspond au moins à une specialité d'un agent
+                //On recupere le champ specialite de la mission :
+                $specialitemission= $form->get('specialitemission')->getData()->getLibelle();
+                if (!$rules->ruleSpecialiteMissionAgents($specialitemission,$agents)){
+                    $this->addFlash('alert','La Spécialité de la mission : '.$specialitemission.' n\'est pas compatible avec au moins une spécialité d\'un agent');
+                    return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+                }
+                return $this->redirectToRoute('missions_index');
+
+            } else {
+                // On récupère le champ pays de la mission
+                $paysMission=$form->get('paysmission')->getData()->getLibelle();
+                //On test si le pays de la mission fait bien parti des pays de(s) planques
+                if (!$rules->rulePlanquesPays($paysMission,$planques)){
+                    return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+                }
+
+                //On recupere le champ specialite de la mission :
+                $specialitemission= $form->get('specialitemission')->getData()->getLibelle();
+                //Recupération des libelles specialité des agents.
+                $agents=$mission->getAgents();
+                //On test si la specialite de la mission fait bien parti au moins des specialités de(s) agent(s)
+                if (!$rules->ruleSpecialiteMissionAgents($specialitemission,$agents)){
+                    $this->addFlash('alert','La Spécialité de la mission : '.$specialitemission.' n\'est pas compatible avec au moins une spécialité d\'un agent');
+                    return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
+                }
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('missions_index');
             }
-
-            //On recupere le champ specialite de la mission :
-            $specialitemission= $form->get('specialitemission')->getData()->getLibelle();
-            //Recupération des libelles specialité des agents.
-            $agents=$mission->getAgents();
-            //On test si la specialite de la mission fait bien parti au moins des specialités de(s) agent(s)
-            if (!$rules->ruleSpecialiteMissionAgents($specialitemission,$agents)){
-                $this->addFlash('alert','La Spécialité de la mission : '.$specialitemission.' n\'est pas compatible avec au moins une spécialité d\'un agent');
-                return $this->redirectToRoute('missions_edit',['id'=>$mission->getId()]);
-            }
-
-
-            $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('missions_index');
         }
 
         return $this->render('missions/edit.html.twig', [
@@ -141,7 +178,7 @@ class MissionsController extends AbstractController
             $planques=$form->get('planques')->getData();
             // On appelle la règle et on test.
             if (!$rules->rulePaysPlanque($paysmission,$planques)){
-                $this->addFlash('alert', 'Le pays de la planque doit être le même que celui du pays de la mission : '.$mission->getPaysmission());
+                $this->addFlash('alert', 'Le pays de la planque doit être le même que celui du pays de la mission : '.$mission->getPaysmission()->getLibelle());
                 return $this->redirectToRoute('missions_planques', ['id' => $mission->getId()]);
             }
 
@@ -216,7 +253,7 @@ class MissionsController extends AbstractController
             // On vérifie la règle des agents et leur spécialité
             // On appelle le service Rules
             if (!$rules->ruleAgentsSpecialites($specialite,$agents)) {
-                $this->addFlash('alert','Au moins 1 agent doit avoir la spécialité de la mission : '.$mission->getSpecialitemission());
+                $this->addFlash('alert','Au moins 1 agent doit avoir la spécialité de la mission : '.$mission->getSpecialitemission()->getLibelle());
                 return $this->redirectToRoute('agents_missions',['id'=>$mission->getId()]);
             }
 
@@ -252,9 +289,8 @@ class MissionsController extends AbstractController
         $form = $this->createForm(MissionsContactsType::class, $mission);
         $form->handleRequest($request);
 
-
-
         if ($form->isSubmitted() && $form->isValid()) {
+
             // On récupère le pays de la mission :
             $countryMission=$mission->getPaysmission()->getLibelle();
             // On teste si le pays du contact est le même que la mission
@@ -262,7 +298,7 @@ class MissionsController extends AbstractController
 
             //Service Rules et on test si contacts même nat que la mission  //$rules=$this->container->get('rules');
             if (!$rules->ruleContactsPays($countryMission,$contacts)){
-                $this->addFlash('alert','Les contacts doivent être du même pays que la mission : '.$mission->getPaysmission());
+                $this->addFlash('alert','Les contacts doivent être du même pays que la mission : '.$mission->getPaysmission()->getLibelle());
                 return $this->redirectToRoute('missions_contacts',['id'=>$mission->getId()]);
             }
 
@@ -276,7 +312,6 @@ class MissionsController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/{id}/missions_delete", name="missions_delete", methods={"DELETE"})
@@ -292,20 +327,4 @@ class MissionsController extends AbstractController
         return $this->redirectToRoute('missions_index');
     }
 
-    ///*
-    ///**
-    // * @Route("/{id}/planques/delete", name="planques_delete", methods={"DELETE"})
-    // */
-    //public function deletePlanques(Request $request, Missions $mission,Planques $planques): Response
-    //{
-    //    if ($this->isCsrfTokenValid('delete'.$mission->getId(), $request->request->get('_token'))) {
-//
-    //        dd($request->request->get('_planques'));
-    //        $mission->removePlanque();
-//
-    //    }
-//
-    //    return $this->redirectToRoute('missions_index');
-    //}
-    //*/
 }

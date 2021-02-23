@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-class Rules
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class Rules extends AbstractController
 {
 
     /*
@@ -54,8 +56,8 @@ class Rules
 
         //On test si l'ensemble des contacts est du même pays que la mission
         if (!empty($contacts)) {
-            foreach ($contacts as $key => $element) {
-                if ($countryMission !== $contacts[$key]->getPays()->getLibelle()) {
+            foreach ($contacts as $element) {
+                if ($countryMission !== $element->getPays()->getLibelle()) {
                     return false;
                 }
             }
@@ -69,8 +71,8 @@ class Rules
     public function rulePaysPlanque(string $paysmission,$planques)
     {
         // On recherche parmis ces éléments si le pays de la mission = pays de la planque
-        foreach ($planques as $key => $element) {
-            if ($planques[$key]->getPaysplanque()->getLibelle() !== $paysmission) {
+        foreach ($planques as $element) {
+            if ($element->getPaysplanque()->getLibelle() !== $paysmission) {
                     return false;
             }
         }
@@ -94,11 +96,11 @@ class Rules
     /*
      *  On test si le pays de la mission fait bien parti des pays de la planque
      */
-    public function rulePlanquesPays(string $paysMission, $paysplanques){
+    public function rulePlanquesPays(string $paysMission, $planques){
 
         $tabLibellePlanques=[];
-        foreach($paysplanques as $key=>$element){
-            $tabLibellePlanques[]=$element->getPaysPlanque()->getLibelle();
+        foreach($planques as $planque){
+            $tabLibellePlanques[]=$planque->getPaysPlanque()->getLibelle();
         }
         // On test si le pays de la mission fait bien parti des pays de la planque
         if (!empty($tabLibellePlanques)){
@@ -142,5 +144,49 @@ class Rules
 
         return $tabSpecialites;
     }
+
+    /*
+     * Verification si présence agents, contacts et cibles
+     */
+    public function verifAgentsContactsCibles($agents,$contacts,$cibles,$statutMission){
+
+        if (empty($statutMission)){
+            $statutMission='';
+        }
+        $tabAgents=[];
+        $tabContacts=[];
+        $tabCibles=[];
+
+        // Tableau des Id des agents
+        foreach ($agents as $agent){
+            $tabAgents[]=$agent->getId();
+        }
+        // Tableau des Id des contacts
+        foreach ($contacts as $contact){
+            $tabContacts[]=$contact->getId();
+        }
+        // Tableau des Id des cibles
+        foreach ($cibles as $cible){
+            $tabCibles[]=$cible->getId();
+        }
+
+        // Test si présence Agents contacts et cibles
+        if(empty($tabAgents)) {
+            $this->addFlash('alert','Pour passer votre mission a '.$statutMission.', veuillez sélectionner au moins 1 agent');
+            return false;
+        }
+        if(empty($tabContacts)) {
+            $this->addFlash('alert','Pour passer votre mission a '.$statutMission.', veuillez sélectionner au moins 1 contact');
+            return false;
+        }
+        if(empty($tabCibles)) {
+            $this->addFlash('alert','Pour passer votre mission a '.$statutMission.', veuillez sélectionner au moins 1 cible');
+            return false;
+        }
+
+        return true;
+
+    }
+
 
 }

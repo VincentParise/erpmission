@@ -7,9 +7,8 @@
         {% if app.user %}
             <div class="col-md-6 mt-2">
                 <h2 class="text-center">Bienvenue
-                    {% if is_granted('ROLE_ADMIN') %} Administrateur
-                    {% else %}
-                        {{ app.user.firstname }}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        Administrateur
                     {% endif %}
                     dans votre espace</h2>
                 {% if is_granted('ROLE_ADMIN') %}
@@ -26,11 +25,19 @@
                     <hr>
                     <p>Paramétrer les Contacts :</p>
                     <a class="btn btn-info" href="{{ path('contacts_index') }}">Les Contacts</a>
-                {% else %}
+                {% elseif is_granted('ROLE_AGENT') %}
                     <hr>
-                    <p>Accéder à vos missions :</p>
-                    <a class="btn btn-info" href="{{ path('agentsmissions') }}">Liste Mission(s)</a>
+                    <p>Agent {{ app.user.lastname }} : Accéder à vos missions dont vous êtes rattachés</p>
+                    <a class="btn btn-info" href="{{ path('espaceagents') }}">Liste des missions</a>
 
+
+                {% elseif is_granted('ROLE_CONTACT') %}
+                    <hr>
+                    <p>Contact {{ app.user.lastname }} : Ci-dessous vos missions dont vous êtes le contact</p>
+
+                {% else %}
+                     <hr>
+                     <p>Vous n'êtes pas listé dans les bases de donnée, veuillez contacter votre administrateur</p>
                 {% endif %}
             </div>
 
