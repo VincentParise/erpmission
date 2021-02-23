@@ -37,6 +37,19 @@ class MissionsRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+    * @return Missions[] Returns an array of Missions objects
+    */
+    public function findByAgents($value)
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.agents = :val')
+            ->setParameter('val', $value)
+            ->orderBy('m.datestart', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Missions
@@ -49,4 +62,5 @@ class MissionsRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }

@@ -308,5 +308,4 @@ class Missions
         return $this;
     }
 
-
 }
