@@ -10,8 +10,11 @@ use App\Form\MissionsPlanquesType;
 use App\Form\MissionsType;
 use App\Repository\MissionsRepository;
 use App\Services\Rules;
+use App\Services\Search;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,14 +35,57 @@ class MissionsController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-
     /**
      * @Route("/", name="missions_index", methods={"GET"})
+     * @param MissionsRepository $missionsRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @param Search $search
+     * @return Response
      */
-    public function index(MissionsRepository $missionsRepository): Response
+    public function index(MissionsRepository $missionsRepository,PaginatorInterface $paginator,Request $request,Search $search): Response
     {
+        $missions=$missionsRepository->findAll();
+        // LISTE DEROULANTE : pour le filtrage
+        // On récupère dans un tableau les pays des missions de l'agent
+        $paysMissions=$search->filterPaysMissions($missions);
+
+        // On récupère dans un tableau les spécialités des missions de l'agent
+        $specialiteMissions=$search->filterSpecialitesMissions($missions);
+
+        // On récupère dans un tableau les Statuts des missions de l'agent
+        $statutMissions=$search->filterStatutsMissions($missions);
+
+        //Mise en tableau de l'objet des Missions de l'agent
+        $tabMissions=[];
+        foreach($missions as $key=>$element){
+            $tabMissions[$key]=$element;
+        }
+
+        // On vérifie si on a une requete Ajax
+        if($request->get('ajax')){
+            $missions=$search->filterMissions($request->get('pays'),$request->get('specialites'),$request->get('statut'),$tabMissions);
+
+            return new JsonResponse([
+                'content'=>$this->renderView('missions/content_index.html.twig',['missions'=>$missions])
+            ]);
+        }
+
+        // Pagination par le bundle knpPaginator
+        if(!$request->get('ajax')) {
+            $missions = $paginator->paginate(
+                $missions, // Requête contenant les données à paginer
+                $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+                3 // Nombre de résultats par page
+            );
+        }
+
         return $this->render('missions/index.html.twig', [
-            'missions' => $missionsRepository->findAll(),
+            'missions' =>  $missions,
+            'paysmissions'=>$paysMissions,
+            'specialitesmissions'=>$specialiteMissions,
+            'statutsmissions'=>$statutMissions
+
         ]);
     }
 

@@ -11,15 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/espacecontacts/content_missions.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/missions/content_index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ERPMISSION.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ERPMISSION.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/erpmission.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/erpmission.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EspaceagentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EspaceagentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EspacecontactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EspacecontactsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MissionsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/Search.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/espacecontacts/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espacecontacts/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/espaceagents/content_missions.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espaceagents/content_missions.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/espaceagents/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espaceagents/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/missions/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +154,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
       <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1oIGd5fgeYcwYKmePo3JBJXmJlX" />
@@ -160,7 +168,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/espacecontacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/missions" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -168,11 +176,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\missions" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\espacecontacts" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\espaceagents" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\contacts" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\agents" />
-      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\missions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
@@ -197,7 +205,7 @@
       <workItem from="1613976624958" duration="33231000" />
       <workItem from="1614063429725" duration="14847000" />
       <workItem from="1614083806279" duration="27764000" />
-      <workItem from="1614150890121" duration="3390000" />
+      <workItem from="1614150890121" duration="8887000" />
     </task>
     <servers />
   </component>
@@ -234,11 +242,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="3162" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613905583823" />
-    <state x="4530" y="275" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614153880038">
+    <state x="4530" y="275" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614158748932">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4643" y="259" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1614066480037" />
-    <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614153880038" />
+    <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614158748932" />
     <state x="4404" y="243" key="FileChooserDialogImpl" timestamp="1614076649731">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>

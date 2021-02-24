@@ -4,6 +4,7 @@ body{
     height:100%
 }
 
+/* Définition du font-family pour l'ensemble du site*/
 .erp-family {
     font-family: 'Audiowide', cursive;
 }
@@ -18,10 +19,18 @@ footer {
     height:75px;
     width: 100%;
     background-color: #212529;
-
 }
 
 footer span {
     color : white;
-
 }
+
+/* Style sur la pagination */
+.pagination {
+    margin: 15px;
+}
+
+.pagination span {
+    padding-right: 15px;
+}
+

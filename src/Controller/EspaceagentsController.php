@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Repository\AgentsRepository;
 use App\Repository\MissionsRepository;
 use App\Services\Search;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,9 +33,10 @@ class EspaceagentsController extends AbstractController
      * @Route("/espaceagents", name="espaceagents")
      * @param Request $request
      * @param Search $search
+     * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function index(Request $request,Search $search): Response
+    public function index(Request $request,Search $search,PaginatorInterface $paginator): Response
     {
        // On récupère les missions de l'agent :
        $missions=$this->getUser()->getMissions();
@@ -60,10 +62,17 @@ class EspaceagentsController extends AbstractController
             //$missions=$search->filterMissionsAgents($request->get('pays'),$request->get('specialites'),$request->get('statut'),$this->getUser());
             $missions=$search->filterMissionsAgents($request->get('pays'),$request->get('specialites'),$request->get('statut'),$tabMissions);
 
-           return new JsonResponse([
+            return new JsonResponse([
                         'content'=>$this->renderView('espaceagents/content_missions.html.twig',['missions'=>$missions])
            ]);
         }
+
+        // Pagination par le bundle knpPaginator
+        $tabMissions = $paginator->paginate(
+            $tabMissions, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            2 // Nombre de résultats par page
+        );
 
         return $this->render('espaceagents/index.html.twig',[
             'missions'=>$tabMissions,

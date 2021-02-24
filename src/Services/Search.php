@@ -156,8 +156,8 @@ class Search
     }
 
     /*
-        * Filtre pour AJAX liste des missions du contact
-        */
+    * Filtre pour AJAX liste des missions du contact
+    */
     public function filterMissionsContacts($paysFilter,$statutFilter,$tabMissions){
 
         // On cherche l'Id de la base de donnée
@@ -202,9 +202,10 @@ class Search
         return $missions;
     }
 
-
     /*
-    public function filterMissionsAgents($paysFilter,$specialiteFilter,$statutFilter,$idAgent=null){
+     * Filtre pour AJAX liste des missions
+     */
+    public function filterMissions($paysFilter,$specialiteFilter,$statutFilter,$idAgent=null){
 
        // On cherche l'Id de la base de donnée
        $idPays=$this->paysRepository->findIdByLibelle($paysFilter);
@@ -222,14 +223,12 @@ class Search
        if (empty($idPays) && empty($idSpecialites) && !empty($idStatut)){
            $missions=$this->missionsRepository->findBy([
                'statutmission' => $idStatut,
-
            ]);
        }
        if (!empty($idPays) && !empty($idSpecialites) && empty($idStatut)) {
            $missions = $this->missionsRepository->findBy([
                'paysmission' => $idPays,
                'specialitemission' => $idSpecialites,
-
            ]);
        }
        if (!empty($idPays) && !empty($idSpecialites) && !empty($idStatut)) {
@@ -237,40 +236,34 @@ class Search
                'paysmission' => $idPays,
                'specialitemission' => $idSpecialites,
                'statutmission' => $idStatut,
-
            ]);
        }
        if (!empty($idPays) && empty($idSpecialites) && empty($idStatut)) {
            $missions = $this->missionsRepository->findBy([
                'paysmission' => $idPays,
-
            ]);
        }
        if (!empty($idPays) && empty($idSpecialites) && !empty($idStatut)) {
            $missions = $this->missionsRepository->findBy([
                'paysmission' => $idPays,
                'statutmission' => $idStatut,
-
            ]);
        }
        if (empty($idPays) && !empty($idSpecialites) && empty($idStatut)) {
            $missions = $this->missionsRepository->findBy([
                'specialitemission' => $idSpecialites,
-
            ]);
        }
        if (empty($idPays) && !empty($idSpecialites) && !empty($idStatut)) {
            $missions = $this->missionsRepository->findBy([
                'specialitemission' => $idSpecialites,
                'statutmission' => $idStatut,
-
            ]);
        }
 
        return $missions;
-
    }
-    */
+
 
 
 

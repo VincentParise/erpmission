@@ -42,6 +42,7 @@
     <div class="d-flex flex-wrap" id="content">
         {% include 'espaceagents/content_missions.html.twig' %}
     </div>
+    {{ knp_pagination_render(missions) }}
 </div>
 
 {% endblock %}
