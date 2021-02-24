@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Contacts;
 use App\Form\ContactsType;
 use App\Repository\ContactsRepository;
+use App\Services\Search;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,11 +20,38 @@ class ContactsController extends AbstractController
 {
     /**
      * @Route("/", name="contacts_index", methods={"GET"})
+     * @param ContactsRepository $contactsRepository
+     * @param Request $request
+     * @param Search $search
+     * @return Response
      */
-    public function index(ContactsRepository $contactsRepository): Response
+    public function index(ContactsRepository $contactsRepository,Request $request,Search $search): Response
     {
+        $contacts=$contactsRepository->findAll();
+        // LISTE DEROULANTE : pour le filtrage
+        // On récupère dans un tableau les pays du contact
+        $paysContacts=$search->filterPaysContacts($contacts);
+
+        // On vérifie si on a une requete Ajax
+        if($request->get('ajax')){
+            // Lancement repo mission pour recherche mot filtrage
+            $contacts=$contactsRepository->findMotRecherche($request->get('recherche'));
+
+            // Transforme  $agents en tableau pour traitement.
+            $tabContacts=[];
+            foreach($contacts as $key=>$element){
+                $tabContacts[$key]=$element;
+            }
+            $contacts=$search->filterContacts($request->get('pays'),$tabContacts);
+
+            return new JsonResponse([
+                'content'=>$this->renderView('contacts/content_index.html.twig',['contacts' =>$contacts])
+            ]);
+        }
+
         return $this->render('contacts/index.html.twig', [
-            'contacts' => $contactsRepository->findAll(),
+            'contacts' => $contacts,
+            'payscontacts'=>$paysContacts
         ]);
     }
 

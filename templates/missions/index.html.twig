@@ -9,10 +9,11 @@
     <h1 class="erp-family">Liste des Missions</h1>
     <div class="table-responsive-md erp-family mb-2">
         <form class="form-control js-filter">
-            <h4>Filtrage</h4>
+            <h4>Filtrage <small><em style="color: lightgray;font-size: 11px;">cliquer sur la souris en dehors des champs pour lancer les recherches</em></small></h4>
+
             <div class="m-1">
-                <label for="recherche-mot">Recherche par mot :</label>
-                <input name="statut" id="recherche-mot" type="text"><br/>
+                <label for="recherche-mot">Recherche par mot : <small><em style="color: lightgray;font-size: 11px;">(titre ou description)</em></small> </label>
+                <input name="recherche" id="recherche-mot" type="text"><br/>
             </div>
             <div class="m-1">
                 <label for="statut-select">Statut :</label>
@@ -91,7 +92,7 @@
             Form.forEach((value,key)=>{
                 Params.append(key,value)
             })
-
+            console.log(Params)
             // On crée l'url active
             const Url = new URL(window.location.href)
 

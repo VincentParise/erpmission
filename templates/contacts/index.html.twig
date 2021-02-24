@@ -6,42 +6,84 @@
     <h1 class="erp-family">Lise des Contacts</h1>
     <a href="{{ path('home') }}" class="btn btn-primary erp-family">Retour</a>
     <hr>
-<div class="table-responsive-md erp-family mb-5">
-    <table class="mt-5 table">
-        <thead>
-            <tr>
-                <th>Code</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Pays</th>
-                <th>Date de Naissance</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for contact in contacts %}
-            <tr>
-                <td>{{ contact.codename }}</td>
-                <td>{{ contact.firstname }}</td>
-                <td>{{ contact.lastname }}</td>
-                <td>{{ contact.email }}</td>
-                {# <td>{{ contact.roles ? contact.roles|json_encode : '' }}</td> #}
-                <td>{{ contact.pays }}</td>
-                <td>{{ contact.birthday ? contact.birthday|date('Y-m-d') : '' }}</td>
-
-                <td>
-                    <a href="{{ path('contacts_show', {'id': contact.id}) }}" class="btn btn-info btn-sm mb-1">show</a><br/>
-                    <a href="{{ path('contacts_edit', {'id': contact.id}) }}" class="btn btn-info btn-sm mb-1">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">Pas de contacts trouvés</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+    <div class="table-responsive-md erp-family mb-2">
+        <form class="form-control js-filter">
+            <h4>Filtrage <small><em style="color: lightgray;font-size: 11px;">cliquer sur la souris en dehors des champs pour lancer les recherches</em></small></h4>
+            <div class="m-1">
+                <label for="recherche-mot">Recherche par mot : <small><em style="color: lightgray;font-size: 11px;">(Nom ou Prénom)</em></small></label>
+                <input name="recherche" id="recherche-mot" type="text"><br/>
+            </div>
+            <div class="m-1">
+                <label for="pays-select">Pays :</label>
+                <select name="pays" id="pays-select">
+                    <option value="" ></option>
+                    {% for payscontact in payscontacts %}
+                        <option value="{{ payscontact }}" >{{ payscontact }}</option>
+                    {% endfor %}
+                </select><br/>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive-md erp-family mb-5">
+        <table class="mt-5 table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Pays</th>
+                    <th>Date de Naissance</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                     {% include 'contacts/content_index.html.twig' %}
+            </tbody>
+        </table>
+    </div>
     <a href="{{ path('contacts_new') }}" class="btn btn-info erp-family">Nouveau contact</a>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        const select=document.querySelector('.js-filter')
+        select.addEventListener('change',onChangeValueList)
+
+        function onChangeValueList(event){
+            // On intercepte le changement
+            // On Récupère les données du formulaire.
+            const Form = new FormData(select)
+
+            // On fabrique la querystring : après le poitn d'interrogation
+            const Params=new URLSearchParams()
+
+            // On boucle sur chaque clé du formulaire key avec ces valeurs : ici pays et Specialites
+            Form.forEach((value,key)=>{
+                Params.append(key,value)
+            })
+            console.log(Params)
+            // On crée l'url active
+            const Url = new URL(window.location.href)
+
+            // On lance la requête Ajax avec fetch
+            fetch(Url.pathname + '?' + Params.toString() + '&ajax=1',{
+                headers:{
+                    "X-Requested-With":"XMLHttpRequest"
+                }
+            }).then(response =>
+                response.json()
+            ).then(data =>{
+                const content = document.querySelector('#content')
+                content.innerHTML=data.content
+                //console.log(data.content)
+
+                //On met à jour l'URL
+                //history.pushState({},null,Url.pathname+'?'+Params.toString())
+
+            }).catch(e=> alert(e))
+        }
+    </script>
+
 {% endblock %}

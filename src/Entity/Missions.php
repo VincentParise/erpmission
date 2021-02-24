@@ -8,8 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+// Creation d'un index fulltext sur les colonnes title et description pour filtrage recherche mot.
 /**
  * @ORM\Entity(repositoryClass=MissionsRepository::class)
+ * @ORM\Table(name="missions",indexes={@ORM\Index(columns={"title","description"},flags={"fulltext"})})
  */
 class Missions
 {

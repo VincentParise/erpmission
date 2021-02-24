@@ -1,0 +1,20 @@
+{% for contact in contacts %}
+    <tr>
+        <td>{{ contact.codename }}</td>
+        <td>{{ contact.firstname }}</td>
+        <td>{{ contact.lastname }}</td>
+        <td>{{ contact.email }}</td>
+        {# <td>{{ contact.roles ? contact.roles|json_encode : '' }}</td> #}
+        <td>{{ contact.pays }}</td>
+        <td>{{ contact.birthday ? contact.birthday|date('Y-m-d') : '' }}</td>
+
+        <td>
+            <a href="{{ path('contacts_show', {'id': contact.id}) }}" class="btn btn-info btn-sm mb-1">show</a><br/>
+            <a href="{{ path('contacts_edit', {'id': contact.id}) }}" class="btn btn-info btn-sm mb-1">edit</a>
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="9">Pas de contacts trouvés</td>
+    </tr>
+{% endfor %}

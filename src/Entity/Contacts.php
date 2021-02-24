@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=ContactsRepository::class)
+ * @ORM\Table(name="contacts",indexes={@ORM\Index(columns={"firstname","lastname"},flags={"fulltext"})})
  */
 class Contacts implements UserInterface
 {

@@ -1,0 +1,24 @@
+{% for agent in agents %}
+    <tr>
+        <td>{{ agent.code }}</td>
+        <td>{{ agent.firstname }}</td>
+        <td>{{ agent.lastname }}</td>
+        <td>{{ agent.email }}</td>
+        {# <td>{{ agent.roles ? agent.roles|json_encode : '' }}</td> #}
+        <td>{{ agent.birthday ? agent.birthday|date('Y-m-d') : '' }}</td>
+        <td>{{ agent.pays }}</td>
+        <td>
+            {% for specialite in agent.specialites %}
+                {{ specialite }} <br/>
+            {% endfor %}
+        </td>
+       <td>
+            <a href="{{ path('agents_show', {'id': agent.id}) }}" class="btn btn-info btn-sm mb-1">show</a><br/>
+            <a href="{{ path('agents_edit', {'id': agent.id}) }}" class="btn btn-info btn-sm mb-1">edit</a>
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="9">Pas d'agents trouvés</td>
+    </tr>
+{% endfor %}

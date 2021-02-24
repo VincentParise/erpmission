@@ -19,6 +19,21 @@ class ContactsRepository extends ServiceEntityRepository
         parent::__construct($registry, Contacts::class);
     }
 
+    /*
+    * Recherche mission par les mot firstname et lastname
+    */
+    public function findMotRecherche($mot){
+        $query= $this->createQueryBuilder('c');
+        if($mot!=null){
+            $query->where('MATCH_AGAINST(c.firstname, c.lastname) AGAINST 
+            (:mots boolean)>0')
+                ->setParameter('mots',$mot);
+        }
+        return $query->getQuery()->getResult();
+    }
+
+
+
     // /**
     //  * @return Contacts[] Returns an array of Contacts objects
     //  */

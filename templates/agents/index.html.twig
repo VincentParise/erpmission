@@ -6,47 +6,94 @@
     <h1 class="erp-family">Liste des Agents</h1>
     <a href="{{ path('home') }}" class="btn btn-primary erp-family">Retour</a>
     <hr>
-<div class="table-responsive-md erp-family mb-5">
-    <table class="mt-5 table">
-        <thead>
-            <tr>
-                <th>Code</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Date Anniversaire</th>
-                <th>Pays</th>
-                <th>Spécialités</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for agent in agents %}
-            <tr>
-                <td>{{ agent.code }}</td>
-                <td>{{ agent.firstname }}</td>
-                <td>{{ agent.lastname }}</td>
-                <td>{{ agent.email }}</td>
-                {# <td>{{ agent.roles ? agent.roles|json_encode : '' }}</td> #}
-                <td>{{ agent.birthday ? agent.birthday|date('Y-m-d') : '' }}</td>
-                <td>{{ agent.pays }}</td>
-                <td>
-                    {% for specialite in agent.specialites %}
-                        {{ specialite }} <br/>
+    <div class="table-responsive-md erp-family mb-2">
+        <form class="form-control js-filter">
+            <h4>Filtrage <small><em style="color: lightgray;font-size: 11px;">cliquer sur la souris en dehors des champs pour lancer les recherches</em></small></h4>
+            <div class="m-1">
+                <label for="recherche-mot">Recherche par mot : <small><em style="color: lightgray;font-size: 11px;">(Nom ou Prénom)</em></small></label>
+                <input name="recherche" id="recherche-mot" type="text"><br/>
+            </div>
+            <div class="m-1">
+                <label for="pays-select">Pays :</label>
+                <select name="pays" id="pays-select">
+                    <option value="" ></option>
+                    {% for paysagent in paysagents %}
+                        <option value="{{ paysagent }}" >{{ paysagent }}</option>
                     {% endfor %}
-                </td>
-               <td>
-                    <a href="{{ path('agents_show', {'id': agent.id}) }}" class="btn btn-info btn-sm mb-1">show</a><br/>
-                    <a href="{{ path('agents_edit', {'id': agent.id}) }}" class="btn btn-info btn-sm mb-1">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">Pas d'agents trouvés</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+                </select><br/>
+            </div>
+            <div class="m-1">
+                <label for="specialites-select">Specialité :</label>
+                <select name="specialites" id="specialites-select">
+                    <option value="" ></option>
+                    {% for specialitesagent in specialitesagents %}
+                        <option value="{{ specialitesagent }}" >{{ specialitesagent }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive-md erp-family mb-5">
+        <table class="mt-5 table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Date Anniversaire</th>
+                    <th>Pays</th>
+                    <th>Spécialités</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                 {% include 'agents/content_index.html.twig' %}
+            </tbody>
+        </table>
+    </div>
     <a href="{{ path('agents_new') }}" class="btn btn-info erp-family">Nouveau Agent</a>
+{% endblock %}
+{% block javascripts %}
+
+    <script>
+        const select=document.querySelector('.js-filter')
+        select.addEventListener('change',onChangeValueList)
+
+        function onChangeValueList(event){
+            // On intercepte le changement
+            // On Récupère les données du formulaire.
+            const Form = new FormData(select)
+
+            // On fabrique la querystring : après le poitn d'interrogation
+            const Params=new URLSearchParams()
+
+            // On boucle sur chaque clé du formulaire key avec ces valeurs : ici pays et Specialites
+            Form.forEach((value,key)=>{
+                Params.append(key,value)
+            })
+            console.log(Params)
+            // On crée l'url active
+            const Url = new URL(window.location.href)
+
+            // On lance la requête Ajax avec fetch
+            fetch(Url.pathname + '?' + Params.toString() + '&ajax=1',{
+                headers:{
+                    "X-Requested-With":"XMLHttpRequest"
+                }
+            }).then(response =>
+                response.json()
+            ).then(data =>{
+                const content = document.querySelector('#content')
+                content.innerHTML=data.content
+                //console.log(data.content)
+
+                //On met à jour l'URL
+                //history.pushState({},null,Url.pathname+'?'+Params.toString())
+
+            }).catch(e=> alert(e))
+        }
+    </script>
+
 {% endblock %}

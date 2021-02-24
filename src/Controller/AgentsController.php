@@ -7,8 +7,10 @@ use App\Form\AgentsType;
 use App\Repository\AgentsRepository;
 use App\Repository\MissionsRepository;
 use App\Services\Rules;
+use App\Services\Search;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,15 +33,45 @@ class AgentsController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-     /**
+    /**
      * @Route("/", name="agents_index", methods={"GET"})
      * @param AgentsRepository $agentsRepository
+     * @param Search $search
+     * @param Request $request
      * @return Response
      */
-    public function index(AgentsRepository $agentsRepository): Response
+    public function index(AgentsRepository $agentsRepository,Search $search,Request $request): Response
     {
+
+        $agents=$agentsRepository->findAll();
+        // LISTE DEROULANTE : pour le filtrage
+        // On récupère dans un tableau les pays de l'agent
+        $paysAgents=$search->filterPaysAgents($agents);
+        // On récupère dans un tableau les spécialités des missions de l'agent
+        $specialiteAgents=$search->filterSpecialitesAgents($agents);
+
+
+        // On vérifie si on a une requete Ajax
+        if($request->get('ajax')){
+            // Lancement repo mission pour recherche mot filtrage
+            $agents=$agentsRepository->findMotRecherche($request->get('recherche'));
+
+            // Transforme  $agents en tableau pour traitement.
+            $tabAgents=[];
+            foreach($agents as $key=>$element){
+                $tabAgents[$key]=$element;
+            }
+            $agents=$search->filterAgents($request->get('pays'),$request->get('specialites'),$tabAgents);
+
+            return new JsonResponse([
+                'content'=>$this->renderView('agents/content_index.html.twig',['agents' =>$agents])
+            ]);
+        }
+
         return $this->render('agents/index.html.twig', [
-            'agents' =>$agentsRepository->findAll(),
+            'agents' =>$agents,
+            'paysagents'=>$paysAgents,
+            'specialitesagents'=>$specialiteAgents,
         ]);
     }
 

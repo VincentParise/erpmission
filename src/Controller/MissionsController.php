@@ -56,15 +56,17 @@ class MissionsController extends AbstractController
         // On récupère dans un tableau les Statuts des missions de l'agent
         $statutMissions=$search->filterStatutsMissions($missions);
 
-        //Mise en tableau de l'objet des Missions de l'agent
-        $tabMissions=[];
-        foreach($missions as $key=>$element){
-            $tabMissions[$key]=$element;
-        }
-
         // On vérifie si on a une requete Ajax
         if($request->get('ajax')){
-            $missions=$search->filterMissions($request->get('pays'),$request->get('specialites'),$request->get('statut'),$tabMissions);
+            // Lancement repo mission pour recherche mot filtrage
+            $missions=$missionsRepository->findMotRecherche($request->get('recherche'));
+
+            // Transforme $missions en tableau pour traitement.
+            $tabMissions=[];
+            foreach($missions as $key=>$element){
+                $tabMissions[$key]=$element;
+            }
+            $missions=$search->filterMissionsAgents($request->get('pays'),$request->get('specialites'),$request->get('statut'),$tabMissions);
 
             return new JsonResponse([
                 'content'=>$this->renderView('missions/content_index.html.twig',['missions'=>$missions])

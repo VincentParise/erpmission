@@ -19,6 +19,19 @@ class AgentsRepository extends ServiceEntityRepository
         parent::__construct($registry, Agents::class);
     }
 
+    /*
+   * Recherche mission par les mot firstname et lastname
+   */
+    public function findMotRecherche($mot){
+        $query= $this->createQueryBuilder('a');
+        if($mot!=null){
+            $query->where('MATCH_AGAINST(a.firstname, a.lastname) AGAINST 
+            (:mots boolean)>0')
+                ->setParameter('mots',$mot);
+        }
+        return $query->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Agents[] Returns an array of Agents objects
     //  */

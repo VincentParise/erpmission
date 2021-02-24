@@ -18,6 +18,18 @@ class MissionsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Missions::class);
     }
+    /*
+     * Recherche mission par les mot title et description
+     */
+    public function findMotRecherche($mot){
+        $query= $this->createQueryBuilder('m');
+            if($mot!=null){
+            $query->where('MATCH_AGAINST(m.title, m.description) AGAINST 
+            (:mots boolean)>0')
+                ->setParameter('mots',$mot);
+            }
+            return $query->getQuery()->getResult();
+    }
 
     /**
     * @return Missions[] Returns an array of Missions objects
@@ -50,6 +62,9 @@ class MissionsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+
+
 
     /*
     public function findOneBySomeField($value): ?Missions
