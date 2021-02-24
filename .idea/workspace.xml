@@ -11,21 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/missions/content_index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ERPMISSION.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ERPMISSION.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/erpmission.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/erpmission.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EspaceagentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EspaceagentsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MissionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Search.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/espaceagents/content_missions.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espaceagents/content_missions.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/espaceagents/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espaceagents/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/missions/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/missions/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +192,7 @@
       <workItem from="1613976624958" duration="33231000" />
       <workItem from="1614063429725" duration="14847000" />
       <workItem from="1614083806279" duration="27764000" />
-      <workItem from="1614150890121" duration="8887000" />
+      <workItem from="1614150890121" duration="10101000" />
     </task>
     <servers />
   </component>

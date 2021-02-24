@@ -72,20 +72,17 @@ class MissionsController extends AbstractController
         }
 
         // Pagination par le bundle knpPaginator
-        if(!$request->get('ajax')) {
-            $missions = $paginator->paginate(
-                $missions, // Requête contenant les données à paginer
-                $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-                3 // Nombre de résultats par page
-            );
-        }
+        //$missions = $paginator->paginate(
+        //    $missions, // Requête contenant les données à paginer
+        //    $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+        //    3 // Nombre de résultats par page
+        //);
 
         return $this->render('missions/index.html.twig', [
             'missions' =>  $missions,
             'paysmissions'=>$paysMissions,
             'specialitesmissions'=>$specialiteMissions,
             'statutsmissions'=>$statutMissions
-
         ]);
     }
 

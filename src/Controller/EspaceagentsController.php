@@ -68,11 +68,11 @@ class EspaceagentsController extends AbstractController
         }
 
         // Pagination par le bundle knpPaginator
-        $tabMissions = $paginator->paginate(
-            $tabMissions, // Requête contenant les données à paginer (ici nos articles)
-            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-            2 // Nombre de résultats par page
-        );
+        //$tabMissions = $paginator->paginate(
+        //    $tabMissions, // Requête contenant les données à paginer (ici nos articles)
+        //    $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+        //    2 // Nombre de résultats par page
+        //);
 
         return $this->render('espaceagents/index.html.twig',[
             'missions'=>$tabMissions,
