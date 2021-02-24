@@ -11,12 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Services/Search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/espacecontacts/content_missions.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EspaceagentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EspaceagentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Missions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Missions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MissionsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MissionsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EspacecontactsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EspacecontactsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Search.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/espacecontacts/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/espacecontacts/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,22 +160,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SYMFONY/laboutiquefrancaise" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/espacecontacts" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\espacecontacts" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\espaceagents" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\contacts" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\agents" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\missions" />
-      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\security" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -193,7 +196,8 @@
       <workItem from="1613895324532" duration="11214000" />
       <workItem from="1613976624958" duration="33231000" />
       <workItem from="1614063429725" duration="14847000" />
-      <workItem from="1614083806279" duration="26918000" />
+      <workItem from="1614083806279" duration="27764000" />
+      <workItem from="1614150890121" duration="3390000" />
     </task>
     <servers />
   </component>
@@ -230,11 +234,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="3162" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613905583823" />
-    <state x="4643" y="259" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614066480037">
+    <state x="4530" y="275" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614153880038">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4643" y="259" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1614066480037" />
-    <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614014677485" />
+    <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614153880038" />
     <state x="4404" y="243" key="FileChooserDialogImpl" timestamp="1614076649731">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
@@ -273,6 +277,10 @@
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="3871" y="0" width="1052" height="740" key="dock-window-1/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1613049026182" />
+    <state x="4456" y="240" key="run.anything.popup" timestamp="1614153183432">
+      <screen x="3840" y="0" width="1920" height="1040" />
+    </state>
+    <state x="4456" y="240" key="run.anything.popup/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614153183432" />
     <state x="4470" y="236" key="search.everywhere.popup" timestamp="1613899724302">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>

@@ -32,6 +32,46 @@ class Search
         $this->missionsRepository = $missionsRepository;
     }
 
+    /*
+     * Recuperation pays des missions sous form tableau
+     */
+    public function filterPaysMissions($missions){
+        $paysMissions=[];
+        foreach($missions as $element){
+            if (!in_array($element->getPaysmission()->getLibelle(),$paysMissions)){
+                $paysMissions[]=$element->getPaysmission()->getLibelle();
+            }
+        }
+        return $paysMissions;
+    }
+    /*
+     * Recuperation spécialité des missions sous forme tableau
+     */
+    public function filterSpecialitesMissions($missions) {
+        $specialiteMissions=[];
+        foreach($missions as $element){
+            if (!in_array($element->getSpecialitemission()->getLibelle(),$specialiteMissions)){
+                $specialiteMissions[]=$element->getSpecialitemission()->getLibelle();
+            }
+        }
+        return $specialiteMissions;
+    }
+    /*
+     * Recuperation statut des missions sous forme tableau
+     */
+    public function filterStatutsMissions($missions){
+        $statutMissions=[];
+        foreach($missions as $element){
+            if (!in_array($element->getStatutmission()->getLibelle(),$statutMissions)){
+                $statutMissions[]=$element->getStatutmission()->getLibelle();
+            }
+        }
+        return $statutMissions;
+    }
+
+    /*
+     * Filtre pour AJAX liste des missions de l'agent
+     */
     public function filterMissionsAgents($paysFilter,$specialiteFilter,$statutFilter,$tabMissions){
 
         // On cherche l'Id de la base de donnée
@@ -112,11 +152,55 @@ class Search
                 }
             }
         }
-
         return $missions;
-
     }
 
+    /*
+        * Filtre pour AJAX liste des missions du contact
+        */
+    public function filterMissionsContacts($paysFilter,$statutFilter,$tabMissions){
+
+        // On cherche l'Id de la base de donnée
+        $idPays=$this->paysRepository->findIdByLibelle($paysFilter);
+
+        // On cherche l'Id de la base de donnée
+        $idStatut=$this->statutsmissionsRepository->findIdByLibelle($statutFilter);
+
+        // On recherche avec le repo en fonction des Id dans la base de donnée
+        // - 1 -
+        if (empty($idPays) && empty($idStatut)){
+            $missions=$tabMissions;
+        }
+        // - 2 -
+        if (empty($idPays) && !empty($idStatut)){
+            $missions=[];
+            foreach($tabMissions as $key=>$element){
+                if($element->getStatutmission()->getId() === $idStatut->getId()){
+                    $missions[$key]=$element;
+                }
+            }
+        }
+        // - 3 -
+        if (!empty($idPays) && empty($idStatut)) {
+            $missions=[];
+            foreach($tabMissions as $key=>$element){
+                if($element->getPaysmission()->getId() === $idPays->getId()){
+                    $missions[$key]=$element;
+                }
+            }
+        }
+        // - 4 -
+        if (!empty($idPays) && !empty($idStatut)) {
+            $missions=[];
+            foreach($tabMissions as $key=>$element){
+                if($element->getPaysmission()->getId() === $idPays->getId()  && $element->getStatutmission()->getId() === $idStatut->getId()){
+                    $missions[$key]=$element;
+                }
+            }
+        }
+
+        return $missions;
+    }
 
 
     /*

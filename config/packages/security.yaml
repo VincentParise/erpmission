@@ -79,5 +79,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/agents, roles: ROLE_ADMIN }
-        -  {path: ^/contacts, roles: ROLE_ADMIN }
+        - { path: ^/contacts, roles: ROLE_ADMIN }
+        - { path: ^/espacecontacts, roles: ROLE_CONTACT }
+        - { path: ^/espaceagents, roles: ROLE_AGENT }
         # - { path: ^/profile, roles: ROLE_USER }

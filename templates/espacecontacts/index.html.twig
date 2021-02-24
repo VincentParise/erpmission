@@ -1,20 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EspacecontactsController!{% endblock %}
+{% block title %}Espace Contact{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
+    <div class="erp-family">
+        <h1>Element Mission Contact {{ app.user.lastname }}</h1>
+        <div>
+            <form class="form-control js-filter">
+                <h4>Filtrage</h4>
+                <div class="m-1">
+                    <label for="statut-select">Statut :</label>
+                    <select name="statut" id="statut-select">
+                        <option value="" ></option>
+                        {% for statutsmission in statutsmissions %}
+                            <option value="{{ statutsmission }}" class="js-filter">{{ statutsmission }}</option>
+                        {% endfor %}
+                    </select><br/>
+                </div>
+                <div class="m-1">
+                    <label for="pays-select">Pays :</label>
+                    <select name="pays" id="pays-select">
+                        <option value="" ></option>
+                        {% for paysmission in paysmissions %}
+                            <option value="{{ paysmission }}" class="js-filter">{{ paysmission }}</option>
+                        {% endfor %}
+                    </select><br/>
+                </div>
+            </form>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        </div>
+        <div class="d-flex flex-wrap" id="content">
+            {% include 'espacecontacts/content_missions.html.twig' %}
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/DEVELOPPEMENT/PROJETS/ERPMISSION/src/Controller/EspacecontactsController.php'|file_link(0) }}">src/Controller/EspacecontactsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/DEVELOPPEMENT/PROJETS/ERPMISSION/templates/espacecontacts/index.html.twig'|file_link(0) }}">templates/espacecontacts/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% endblock %}
+{% block javascripts %}
+
+    <script>
+        const select=document.querySelector('.js-filter')
+        select.addEventListener('change',onChangeValueList)
+
+        function onChangeValueList(event){
+            // On intercepte le changement
+            // On Récupère les données du formulaire.
+            const Form = new FormData(select)
+
+            // On fabrique la querystring : après le poitn d'interrogation
+            const Params=new URLSearchParams()
+
+            // On boucle sur chaque clé du formulaire key avec ces valeurs : ici pays et Specialites
+            Form.forEach((value,key)=>{
+                Params.append(key,value)
+            })
+
+            // On crée l'url active
+            const Url = new URL(window.location.href)
+
+            // On lance la requête Ajax avec fetch
+            fetch(Url.pathname + '?' + Params.toString() + '&ajax=1',{
+                headers:{
+                    "X-Requested-With":"XMLHttpRequest"
+                }
+            }).then(response =>
+                response.json()
+            ).then(data =>{
+                const content = document.querySelector('#content')
+                content.innerHTML=data.content
+
+                //On met à jour l'URL
+                //history.pushState({},null,Url.pathname+'?'+Params.toString())
+
+            }).catch(e=> alert(e))
+
+        }
+
+    </script>
+
 {% endblock %}
