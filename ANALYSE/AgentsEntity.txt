@@ -1,9 +1,0 @@
-5	agent007@agent.fr	 '[]'		10	4569	 'James'	 'Bond'	 1998-06-14 00:00:00
-6	agent008@agent.fr	 '[]'		6	1253	 'Vince'	 'Ducati'	 2002-02-22 00:00:00
-7	agent009@agent.fr	 '[]'		7	4568	 'Eric'	 'Dupont'	 1955-02-01 00:00:00
-8	agent010@agent.fr	 '[]'		12	153221	 'Vinci'	 'Quatuor'	 1998-12-12 00:00:00
-9	agent001@agent.fr	 '[]'		5	856322	 'Luc'	 'Pavot'	 1977-05-02 00:00:00
-10	agent002@agent.fr	 '[]'		9	85692	 'Rodolph'	 'Erbanwish'	 1997-06-05 00:00:00
-11	agent003@agent.fr	 '[]'		11	85692	 'Mohamed'	 'Bensalem'	 1956-02-03 00:00:00
-12	agent004@agent.fr	 '[]'		7	85962	 'Ben'	 'Moktar'	 1976-05-02 00:00:00
-13	agent005@agent.fr	 '[]'		7	5953	 'Ben'	 'Mcdonald'	 2000-01-01 00:00:00
