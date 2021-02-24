@@ -63,7 +63,27 @@ class MissionsRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     *
+     */
+    public function getPaginatedMissions($page, $limit){
+        $query = $this->createQueryBuilder('m');
 
+        $query->setFirstResult(($page * $limit) - $limit)
+              ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     *  On compte le nombre total de missions
+     */
+    public function getTotalMissions(){
+        $query = $this->createQueryBuilder('m')
+                      ->select('COUNT(m)');
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
 
 
     /*

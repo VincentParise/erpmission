@@ -45,7 +45,23 @@ class MissionsController extends AbstractController
      */
     public function index(MissionsRepository $missionsRepository,PaginatorInterface $paginator,Request $request,Search $search): Response
     {
+        //On définit le nombre de missions par page :
+        //$limit=3;
+        //// On récupère le numéro de page
+        //$page = (int)$request->query->get("page", 1);
+        //// On récupère les missions de la page en fonction du filtre
+        //$missions = $missionsRepository->getPaginatedMissions($page, $limit);
+        //// On récupère le nombre total de missions
+        //$total = $missionsRepository->getTotalMissions();
+        // Pagination par le bundle knpPaginator
+        //$missions = $paginator->paginate(
+        //    $missions, // Requête contenant les données à paginer
+        //    $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+        //    3 // Nombre de résultats par page
+        //);
+
         $missions=$missionsRepository->findAll();
+
         // LISTE DEROULANTE : pour le filtrage
         // On récupère dans un tableau les pays des missions de l'agent
         $paysMissions=$search->filterPaysMissions($missions);
@@ -66,6 +82,7 @@ class MissionsController extends AbstractController
             foreach($missions as $key=>$element){
                 $tabMissions[$key]=$element;
             }
+
             $missions=$search->filterMissionsAgents($request->get('pays'),$request->get('specialites'),$request->get('statut'),$tabMissions);
 
             return new JsonResponse([
@@ -73,18 +90,12 @@ class MissionsController extends AbstractController
             ]);
         }
 
-        // Pagination par le bundle knpPaginator
-        //$missions = $paginator->paginate(
-        //    $missions, // Requête contenant les données à paginer
-        //    $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-        //    3 // Nombre de résultats par page
-        //);
-
-        return $this->render('missions/index.html.twig', [
+       return $this->render('missions/index.html.twig', [
             'missions' =>  $missions,
             'paysmissions'=>$paysMissions,
             'specialitesmissions'=>$specialiteMissions,
             'statutsmissions'=>$statutMissions
+
         ]);
     }
 

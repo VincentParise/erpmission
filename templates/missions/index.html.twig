@@ -68,7 +68,17 @@
                 {% include 'missions/content_index.html.twig' %}
             </tbody>
         </table>
-        {# {{ knp_pagination_render(missions) }} #}
+
+        {# Gestion de la pagination
+        <ul class="pagination">
+            {% for item in 1..((total/limit)|round(0,'ceil')) %}
+                <li>
+
+                </li>
+            {% endfor %}
+        </ul>
+        #}
+        {#  {{ knp_pagination_render(missions) }}#}
     </div>
 
     <a href="{{ path('missions_new') }}" class="btn btn-info erp-family">Nouvelle Mission</a>
@@ -109,7 +119,7 @@
                 //console.log(data.content)
 
                 //On met à jour l'URL
-                //history.pushState({},null,Url.pathname+'?'+Params.toString())
+                history.pushState({},null,Url.pathname+'?'+Params.toString())
 
             }).catch(e=> alert(e))
         }
