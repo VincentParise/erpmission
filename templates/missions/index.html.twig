@@ -11,11 +11,15 @@
         <form class="form-control js-filter">
             <h4>Filtrage</h4>
             <div class="m-1">
+                <label for="recherche-mot">Recherche par mot :</label>
+                <input name="statut" id="recherche-mot" type="text"><br/>
+            </div>
+            <div class="m-1">
                 <label for="statut-select">Statut :</label>
                 <select name="statut" id="statut-select">
                     <option value="" ></option>
                     {% for statutsmission in statutsmissions %}
-                        <option value="{{ statutsmission }}" class="js-filter">{{ statutsmission }}</option>
+                        <option value="{{ statutsmission }}" >{{ statutsmission }}</option>
                     {% endfor %}
                 </select><br/>
             </div>
@@ -24,7 +28,7 @@
                 <select name="pays" id="pays-select">
                     <option value="" ></option>
                     {% for paysmission in paysmissions %}
-                        <option value="{{ paysmission }}" class="js-filter">{{ paysmission }}</option>
+                        <option value="{{ paysmission }}" >{{ paysmission }}</option>
                     {% endfor %}
                 </select><br/>
             </div>
@@ -33,7 +37,7 @@
                 <select name="specialites" id="specialites-select">
                     <option value="" ></option>
                     {% for specialitesmission in specialitesmissions %}
-                        <option value="{{ specialitesmission }}" class="js-filter">{{ specialitesmission }}</option>
+                        <option value="{{ specialitesmission }}" >{{ specialitesmission }}</option>
                     {% endfor %}
                 </select>
             </div>
