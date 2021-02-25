@@ -170,7 +170,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.data.extractors.current.export.id" value="SQL Updates" />
+    <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SYMFONY/laboutiquefrancaise" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -209,7 +209,7 @@
       <workItem from="1614063429725" duration="14847000" />
       <workItem from="1614083806279" duration="27764000" />
       <workItem from="1614150890121" duration="27955000" />
-      <workItem from="1614238777480" duration="4963000" />
+      <workItem from="1614238777480" duration="8657000" />
     </task>
     <servers />
   </component>

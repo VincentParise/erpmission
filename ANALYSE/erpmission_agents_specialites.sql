@@ -1,0 +1,10 @@
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (1, 6);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (1, 7);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (1, 8);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (1, 9);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (1, 10);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (2, 6);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (2, 7);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (2, 8);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (2, 9);
+INSERT INTO erpmission.agents_specialites (agents_id, specialites_id) VALUES (2, 10);
