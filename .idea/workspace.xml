@@ -28,6 +28,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ANALYSE/erpmission_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ANALYSE/erpmission_user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +174,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SYMFONY/laboutiquefrancaise" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PARISEIMMOBILIER" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -210,6 +213,7 @@
       <workItem from="1614083806279" duration="27764000" />
       <workItem from="1614150890121" duration="27955000" />
       <workItem from="1614238777480" duration="8657000" />
+      <workItem from="1614259689389" duration="470000" />
     </task>
     <servers />
   </component>
@@ -267,11 +271,11 @@
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4480" y="275" key="DUMP_DIALOG_DIMENSION_KEY/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614246316421" />
-    <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1614239623088">
+    <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1614260024432">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="4404" y="243" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1614076649731" />
-    <state x="4468" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614239623088" />
+    <state x="4468" y="271" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614260024432" />
     <state x="4543" y="243" key="NewPhpClassDialog" timestamp="1614101754712">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
