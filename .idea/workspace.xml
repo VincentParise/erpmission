@@ -27,7 +27,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1791dc87-fcc2-4083-9e5b-099ffd03aef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bundles/TwigBundle/Exception/error500.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,15 +178,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\src\bundles\TwigBundle\Exception" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\contacts" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\agents" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\missions" />
       <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\espacecontacts" />
-      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\templates\espaceagents" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\DEVELOPPEMENT\PROJETS\ERPMISSION\public\assets\js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -210,7 +210,7 @@
       <workItem from="1614083806279" duration="27764000" />
       <workItem from="1614150890121" duration="27955000" />
       <workItem from="1614238777480" duration="8657000" />
-      <workItem from="1614259689389" duration="922000" />
+      <workItem from="1614259689389" duration="2350000" />
     </task>
     <servers />
   </component>
