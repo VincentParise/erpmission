@@ -170,7 +170,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
+    <property name="database.data.extractors.current.export.id" value="SQL Updates" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SYMFONY/laboutiquefrancaise" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -209,7 +209,7 @@
       <workItem from="1614063429725" duration="14847000" />
       <workItem from="1614083806279" duration="27764000" />
       <workItem from="1614150890121" duration="27955000" />
-      <workItem from="1614238777480" duration="4027000" />
+      <workItem from="1614238777480" duration="4963000" />
     </task>
     <servers />
   </component>
@@ -263,6 +263,10 @@
     </state>
     <state x="4643" y="259" width="540" height="444" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1614066480037" />
     <state x="4530" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614173963941" />
+    <state x="4480" y="275" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1614246316421">
+      <screen x="3840" y="0" width="1920" height="1040" />
+    </state>
+    <state x="4480" y="275" key="DUMP_DIALOG_DIMENSION_KEY/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@3840.0.1920.1040" timestamp="1614246316421" />
     <state x="4468" y="271" key="FileChooserDialogImpl" timestamp="1614239623088">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
